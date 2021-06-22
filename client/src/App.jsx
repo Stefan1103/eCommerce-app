@@ -1,5 +1,7 @@
+import './Sass/app.scss';
+
 function App() {
-	return <div className="App">HELLO HELLO WORLEDS!</div>;
+	return <div className="app">HELLO HELLO WORLEDS!</div>;
 }
 
 export default App;
