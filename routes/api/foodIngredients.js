@@ -11,8 +11,6 @@ const FoodIngredients = require('../../models/FoodIngredients');
 // 	res.send('FOODingredients route');
 // });
 
-// module.exports = router;
-
 // @route GET api/foodIngredients
 // desc GET ALL FOOD INGREDIENTS
 // @access Public
@@ -41,6 +39,20 @@ router.get('/ingredient/:ingredient_id', async (req, res) => {
 		if (error.kind == 'ObjectID') {
 			return res.status(400).json({ msg: 'no details for this ingredient !' });
 		}
+		res.status(500).send('Server Error');
+	}
+});
+// @route GET api/foodIngredients/s/:ingredient_name
+// desc GET Ingredient by name
+// @access Public
+
+router.get('/s/:ingredient_name', async (req, res) => {
+	try {
+		const ingredient = await FoodIngredients.find({ name: req.params.ingredient_name });
+		if (!ingredient) return res.status(400).json({ msg: 'no ingredient found!' });
+		res.json(ingredient);
+	} catch (error) {
+		console.error(error.message);
 		res.status(500).send('Server Error');
 	}
 });
