@@ -1,0 +1,21 @@
+%butn {
+	display: inline-block;
+	cursor: pointer;
+	border-radius: .15em;
+	padding: .2em .6em;
+	text-align: center;
+	&:hover,
+	&:focus {
+		text-decoration: none;
+		background-color: $neutral-100;
+		color: $triadic-orange-500;
+	}
+}
+
+.btn-search {
+	@extend %butn;
+	color: $neutral-100;
+	background-color: $triadic-orange-500;
+	border: none;
+	font-weight: 500;
+}
