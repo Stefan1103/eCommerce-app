@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCloudMeatball, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
 	return (
@@ -8,7 +9,7 @@ const Navbar = () => {
 			<div className="navWrapper">
 				<div className="left">
 					<h2 className="logo">
-						<FontAwesomeIcon icon="fa-solid fa-cloud-meatball" />Flea Market
+						<FontAwesomeIcon icon={faCloudMeatball} className="logo-i-style" /> Flea Market
 					</h2>
 				</div>
 				<div className="middle">
@@ -20,7 +21,8 @@ const Navbar = () => {
 					</form>
 				</div>
 				<div className="right">
-					<div className="cart" />
+					<FontAwesomeIcon icon={faShoppingCart} />
+					<div className="cart">0</div>
 				</div>
 			</div>
 		</div>
