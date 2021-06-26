@@ -12,10 +12,25 @@
 	}
 }
 
-.btn-search {
+.btn-main {
 	@extend %butn;
 	color: $neutral-100;
 	background-color: $triadic-orange-500;
 	border: none;
 	font-weight: 500;
+}
+.btn-add-cart {
+	@extend %butn;
+	color: $neutral-100;
+	background-color: $triadic-orange-500;
+	border: none;
+	font-weight: 400;
+	transition: transform 200ms ease-out;
+	&:hover,
+	&:focus {
+		text-decoration: none;
+		color: $neutral-100;
+		background-color: $triadic-red-400;
+		transform: scale(1.08);
+	}
 }

@@ -1,5 +1,6 @@
 import './Sass/app.scss';
 import Navbar from './components/Navbar/Navbar';
+import Main from './components/Main/Main';
 
 //Redux
 import { Provider } from 'react-redux';
@@ -10,7 +11,10 @@ function App() {
 		<Provider store={store}>
 			<div className="app">
 				<Navbar />
-				<div className="sections"> HELLO HELLO WORLEDS!</div>
+				<div className="sections">
+					{' '}
+					<Main />
+				</div>
 			</div>
 		</Provider>
 	);

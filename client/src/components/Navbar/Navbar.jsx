@@ -15,7 +15,7 @@ const Navbar = () => {
 				<div className="middle">
 					<form>
 						<input type="text" placeholder="search using name or category ex: Apple or 'meat'" />
-						<button className="btn-search" type="submit">
+						<button className="btn-main" type="submit">
 							Search
 						</button>
 					</form>
