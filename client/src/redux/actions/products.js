@@ -25,7 +25,7 @@ export const fetchProducts = () => {
 	return async (dispatch) => {
 		dispatch(fetchProductsRequest);
 		try {
-			const results = await axios.get('/api/foodIngredients');
+			const results = await axios.get('/api/products');
 			const products = results.data;
 			console.log('PRODUCTS', products);
 			dispatch(fetchProductsSuccess(products));
