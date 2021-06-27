@@ -3,7 +3,7 @@ import Maincard from './Maincard/Maincard';
 
 const Main = () => {
 	return (
-		<main className="container">
+		<main>
 			<Maincard />
 		</main>
 	);

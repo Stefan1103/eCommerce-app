@@ -2,11 +2,12 @@ import './Sass/app.scss';
 import Navbar from './components/layout/Navbar';
 import Main from './components/Main/Main';
 import CustomAlert from './components/layout/CustomAlert';
+import Footer from './components/layout/Footer';
+import Featured from './components/Featured/Featured';
 
 //Redux
 import { Provider } from 'react-redux';
 import store from './redux/store';
-console.log(store);
 
 function App() {
 	return (
@@ -15,9 +16,13 @@ function App() {
 				<Navbar />
 
 				<div className="sections">
-					<CustomAlert />
-					<Main />
+					<div className="container">
+						<Featured />
+						<CustomAlert />
+						<Main />
+					</div>
 				</div>
+				<Footer />
 			</div>
 		</Provider>
 	);

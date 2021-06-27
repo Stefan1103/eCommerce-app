@@ -1,0 +1,32 @@
+.myFooter {
+	width: 100%;
+	display: flex;
+	padding: 1rem;
+	justify-content: space-around;
+	align-items: center;
+	color: $triadic-orange-500;
+	z-index: 1;
+	flex-shrink: 0;
+	border-top: 1px solid wheat;
+	.left {
+		flex: 4;
+	}
+	.right {
+		flex: 1;
+		ul {
+			list-style: none;
+			display: flex;
+			justify-content: space-between;
+
+			li {
+				a {
+					text-decoration: none;
+					color: $triadic-orange-500;
+					&:hover {
+						color: $triadic-red-400;
+					}
+				}
+			}
+		}
+	}
+}
