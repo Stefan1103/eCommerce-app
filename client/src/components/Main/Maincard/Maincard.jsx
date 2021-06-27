@@ -1,10 +1,20 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProducts } from '../../../redux/actions/products';
 
 import Card from 'react-bootstrap/Card';
 
 const Maincard = () => {
+	const dispatch = useDispatch();
+	const products = useSelector((state) => state.products);
+	console.log('beforeeffect', products);
+	useEffect(() => {
+		dispatch(fetchProducts());
+	}, []);
+	console.log('aftereffect', products);
 	return (
 		<div className="customCard">
 			<Card style={{ width: '18rem' }}>
