@@ -23,10 +23,10 @@ export const fetchProductsFailure = (error) => (dispatch) => {
 
 export const fetchProducts = () => {
 	return async (dispatch) => {
-		dispatch(fetchProductsRequest);
+		dispatch(fetchProductsRequest());
 		try {
 			const results = await axios.get('/api/products');
-			const products = results.data;
+			const products = await results.data;
 			console.log('PRODUCTS', products);
 			dispatch(fetchProductsSuccess(products));
 		} catch (error) {

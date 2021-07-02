@@ -1,30 +1,34 @@
 import './Sass/app.scss';
 import Navbar from './components/layout/Navbar';
-import Main from './components/Main/Main';
-import CustomAlert from './components/layout/CustomAlert';
 import Footer from './components/layout/Footer';
-import Featured from './components/Featured/Featured';
+import LandingPage from './components/layout/LandingPage';
 
-//Redux
-import { Provider } from 'react-redux';
-import store from './redux/store';
+import { useEffect } from 'react';
+
+//redux
+import { fetchProducts } from './redux/actions/products';
+import { useDispatch, useSelector } from 'react-redux';
 
 function App() {
-	return (
-		<Provider store={store}>
-			<div className="app">
-				<Navbar />
-
-				<div className="sections">
-					<div className="container">
-						<Featured />
-						<CustomAlert />
-						<Main />
-					</div>
+	const dispatch = useDispatch();
+	const products = useSelector((state) => state.products);
+	useEffect(() => {
+		dispatch(fetchProducts());
+	}, []);
+	return products.loading ? (
+		<h2>Loading...</h2>
+	) : products.error ? (
+		<h2>{products.error}</h2>
+	) : (
+		<div className="app">
+			<Navbar />
+			<div className="sections">
+				<div className="container">
+					<LandingPage />
 				</div>
-				<Footer />
 			</div>
-		</Provider>
+			<Footer />
+		</div>
 	);
 }
 
