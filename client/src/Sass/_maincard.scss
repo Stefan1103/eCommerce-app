@@ -1,4 +1,47 @@
-.btn-container {
+main {
+	width: 100%;
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	margin: 5rem auto;
+
+	.customCard {
+		margin: 1rem;
+		.card {
+			overflow: hidden;
+			transition: transform 650ms ease;
+			&:hover,
+			:focus,
+			:focus-within {
+				transform: scale(1.05);
+			}
+
+			.card-body {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				background: linear-gradient($neutral-100, lighten($triadic-yellow-600, 20%), lighten($triadic-orange-500, 20%));
+				.card-title {
+					font-size: 2rem;
+					font-weight: 600;
+					color: $neutral-900;
+				}
+				.card-text {
+					color: $neutral-900;
+					font-size: 1.2rem;
+					font-weight: 500;
+				}
+				.btn-container {
+					display: flex;
+					justify-content: space-between;
+				}
+			}
+		}
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+		}
+	}
 }

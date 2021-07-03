@@ -17,7 +17,7 @@ const Products = require('../../models/Products');
 
 router.get('/', async (req, res) => {
 	try {
-		const products = await Products.find().limit(10);
+		const products = await Products.find().limit(14);
 		res.json(products);
 	} catch (error) {
 		console.error(error.message);

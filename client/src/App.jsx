@@ -23,9 +23,7 @@ function App() {
 		<div className="app">
 			<Navbar />
 			<div className="sections">
-				<div className="container">
-					<LandingPage />
-				</div>
+				<LandingPage />
 			</div>
 			<Footer />
 		</div>

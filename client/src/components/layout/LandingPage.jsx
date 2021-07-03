@@ -1,14 +1,16 @@
 import Featured from '../Featured/Featured';
 import CustomAlert from './CustomAlert';
-import Main from '../Main/Main';
+import Maincard from '../Main/Maincard';
 import React from 'react';
 
 const LandingPage = () => {
 	return (
 		<React.Fragment>
 			<Featured />
-			<CustomAlert />
-			<Main />
+			<div className="container">
+				<CustomAlert />
+				<Maincard />
+			</div>
 		</React.Fragment>
 	);
 };

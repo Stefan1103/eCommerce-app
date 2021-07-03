@@ -4,7 +4,8 @@
 	height: 4.3rem;
 	position: fixed;
 	top: 0;
-	z-index: 3;
+	z-index: 100;
+	border-bottom: 4px solid $triadic-orange-500;
 	.navWrapper {
 		padding: .8rem 1.9rem;
 		display: flex;
