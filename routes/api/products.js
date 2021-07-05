@@ -63,7 +63,7 @@ router.get('/s/:product_name', async (req, res) => {
 
 router.get('/:product_cat', async (req, res) => {
 	try {
-		const product_cat = await Products.find({ category: `${req.params.product_cat}` });
+		const product_cat = await Products.find({ category: `${req.params.product_cat}` }).limit(20);
 		res.json(product_cat);
 	} catch (error) {
 		console.error(error.message);

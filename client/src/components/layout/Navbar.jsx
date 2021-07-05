@@ -11,7 +11,7 @@ import { useDispatch } from 'react-redux';
 
 const Navbar = () => {
 	const [ searchName, setSearchName ] = useState('');
-	const [ pickedCategory, setPickedCategory ] = useState(null);
+	const [ pickedCategory, setPickedCategory ] = useState('');
 
 	const dispatch = useDispatch();
 
@@ -24,10 +24,9 @@ const Navbar = () => {
 		setSearchName(text);
 	};
 	const handleDropdown = (e) => {
-		console.log('event', e);
 		setPickedCategory(e);
 	};
-	if (pickedCategory) {
+	if (pickedCategory !== '') {
 		dispatch(fetchProductsCategory(pickedCategory));
 	}
 	return (
@@ -44,9 +43,7 @@ const Navbar = () => {
 
 						<Dropdown.Menu>
 							<Dropdown.Item eventKey="fruit">Fruit</Dropdown.Item>
-							<Dropdown.Item eventKey="grain" value="grain">
-								Grain
-							</Dropdown.Item>
+							<Dropdown.Item eventKey="grains">Grain</Dropdown.Item>
 							<Dropdown.Item eventKey="vegetable">Vegetable</Dropdown.Item>
 						</Dropdown.Menu>
 					</Dropdown>

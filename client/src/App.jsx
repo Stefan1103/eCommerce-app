@@ -2,6 +2,7 @@ import './Sass/app.scss';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import LandingPage from './components/layout/LandingPage';
+import Loading from './components/Loading/Loading';
 
 import { useEffect } from 'react';
 
@@ -16,7 +17,7 @@ function App() {
 		dispatch(fetchProducts());
 	}, []);
 	return products.loading ? (
-		<h2>Loading...</h2>
+		<Loading />
 	) : products.error ? (
 		<h2>{products.error}</h2>
 	) : (
