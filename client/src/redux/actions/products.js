@@ -35,3 +35,32 @@ export const fetchProducts = () => {
 		}
 	};
 };
+
+export const fetchProductsSearch = (text) => {
+	return async (dispatch) => {
+		dispatch(fetchProductsRequest());
+		try {
+			const results = await axios.get(`/api/products/s/${text}`);
+			const products = await results.data;
+			console.log('PRODUCTS // search', products);
+			dispatch(fetchProductsSuccess(products));
+		} catch (error) {
+			const errorMsg = error.msg;
+			dispatch(fetchProductsFailure(errorMsg));
+		}
+	};
+};
+export const fetchProductsCategory = (category) => {
+	return async (dispatch) => {
+		dispatch(fetchProductsRequest());
+		try {
+			const results = await axios.get(`/api/products/${category}`);
+			const products = await results.data;
+			console.log('PRODUCTS // category', products);
+			dispatch(fetchProductsSuccess(products));
+		} catch (error) {
+			const errorMsg = error.msg;
+			dispatch(fetchProductsFailure(errorMsg));
+		}
+	};
+};

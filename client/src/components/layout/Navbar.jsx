@@ -1,9 +1,35 @@
 import React from 'react';
+import { useState } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloudMeatball, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import Dropdown from 'react-bootstrap/Dropdown';
+
+//redux
+import { fetchProductsSearch, fetchProductsCategory } from '../../redux/actions/products';
+import { useDispatch } from 'react-redux';
 
 const Navbar = () => {
+	const [ searchName, setSearchName ] = useState('');
+	const [ pickedCategory, setPickedCategory ] = useState(null);
+
+	const dispatch = useDispatch();
+
+	const submitHandler = (e) => {
+		e.preventDefault();
+		dispatch(fetchProductsSearch(searchName.charAt(0).toUpperCase() + searchName.slice(1)));
+	};
+	const handleInput = (e) => {
+		const text = e.target.value;
+		setSearchName(text);
+	};
+	const handleDropdown = (e) => {
+		console.log('event', e);
+		setPickedCategory(e);
+	};
+	if (pickedCategory) {
+		dispatch(fetchProductsCategory(pickedCategory));
+	}
 	return (
 		<div className="customNavbar">
 			<div className="navWrapper">
@@ -13,8 +39,19 @@ const Navbar = () => {
 					</h2>
 				</div>
 				<div className="middle">
-					<form>
-						<input type="text" placeholder="search using name or category ex: Apple or 'meat'" />
+					<Dropdown onSelect={handleDropdown}>
+						<Dropdown.Toggle id="dropdown-basic">Category</Dropdown.Toggle>
+
+						<Dropdown.Menu>
+							<Dropdown.Item eventKey="fruit">Fruit</Dropdown.Item>
+							<Dropdown.Item eventKey="grain" value="grain">
+								Grain
+							</Dropdown.Item>
+							<Dropdown.Item eventKey="vegetable">Vegetable</Dropdown.Item>
+						</Dropdown.Menu>
+					</Dropdown>
+					<form onSubmit={submitHandler}>
+						<input onChange={handleInput} value={searchName} type="text" placeholder="search for products using name ex: Apple" />
 						<button className="btn-main" type="submit">
 							Search
 						</button>

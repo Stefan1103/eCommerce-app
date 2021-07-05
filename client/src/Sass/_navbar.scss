@@ -28,6 +28,24 @@
 			}
 		}
 		.middle {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			.dropdown {
+				.dropdown-toggle {
+					background-color: $triadic-orange-500;
+					color: $neutral-100;
+					border: none;
+					border-radius: .15em;
+					padding: .2em .6em;
+					margin: 0 .5rem;
+					&:focus {
+						border: none;
+						outline: none;
+						box-shadow: none;
+					}
+				}
+			}
 			form {
 				width: 90%;
 				height: 90%;
