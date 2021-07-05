@@ -17,11 +17,14 @@ const Maincard = () => {
 
 				return (
 					<div className="customCard">
-						<Card style={{ width: '18rem', height: '25rem', border: '2px solid orange' }}>
+						<Card>
 							<Card.Img variant="top" src={image} style={{ maxHeight: '12.5rem', minHeight: '12.5rem' }} />
 							<Card.Body>
 								<Card.Title>{name}</Card.Title>
-								<Card.Text>{price}/1kg</Card.Text>
+								<Card.Text>
+									{price}
+									<span>/1kg</span>
+								</Card.Text>
 								<div className="btn-container">
 									<button className="btn-add-cart">Learn more</button>
 									<button className="btn-add-cart">

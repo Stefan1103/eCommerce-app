@@ -10,27 +10,35 @@ main {
 		margin: 1rem;
 		.card {
 			overflow: hidden;
-			transition: transform 650ms ease;
+			transition: all 750ms ease;
+			border: 2px solid $triadic-orange-500;
+			width: 18rem;
+			height: 25rem;
 			&:hover,
-			:focus,
-			:focus-within {
+			&:focus {
 				transform: scale(1.05);
+				border: 3px solid $triadic-red-400;
 			}
 
 			.card-body {
 				display: flex;
 				flex-direction: column;
 				justify-content: space-between;
-				background: linear-gradient($neutral-100, lighten($triadic-yellow-600, 20%), lighten($triadic-orange-500, 20%));
+				background-image: linear-gradient($neutral-100, lighten($triadic-yellow-600, 20%), lighten($triadic-orange-500, 20%));
+
 				.card-title {
 					font-size: 2rem;
-					font-weight: 600;
+					font-weight: 700;
 					color: $neutral-900;
 				}
 				.card-text {
-					color: $neutral-900;
+					color: $triadic-red-400;
 					font-size: 1.2rem;
-					font-weight: 500;
+					font-weight: 600;
+					span {
+						color: $neutral-900;
+						font-weight: 500;
+					}
 				}
 				.btn-container {
 					display: flex;
