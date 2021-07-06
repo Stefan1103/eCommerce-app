@@ -13,6 +13,7 @@ app.get('/', (req, res) => res.send('API Running'));
 
 // Define Routes
 app.use('/api/products', require('./routes/api/products'));
+app.use('/api/categories', require('./routes/api/categories'));
 
 const PORT = process.env.PORT || 5000;
 

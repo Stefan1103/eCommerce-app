@@ -12,7 +12,7 @@ const Products = require('../../models/Products');
 // });
 
 // @route GET api/products
-// desc GET 10 products
+// desc GET 14 products
 // @access Public
 
 router.get('/', async (req, res) => {
@@ -42,6 +42,7 @@ router.get('/product/:product_id', async (req, res) => {
 		res.status(500).send('Server Error');
 	}
 });
+
 // @route GET api/Products/s/:product_name
 // desc GET product by name
 // @access Public
