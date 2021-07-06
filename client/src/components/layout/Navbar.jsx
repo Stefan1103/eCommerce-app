@@ -1,8 +1,12 @@
+//react
 import React from 'react';
 import { useState } from 'react';
 
+//fontawsome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloudMeatball, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+
+//bootstrap
 import Dropdown from 'react-bootstrap/Dropdown';
 
 //redux
