@@ -7,13 +7,16 @@ import Dropdown from 'react-bootstrap/Dropdown';
 
 //redux
 import { fetchProductsSearch, fetchProductsCategory } from '../../redux/actions/products';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Navbar = () => {
 	const [ searchName, setSearchName ] = useState('');
 	const [ pickedCategory, setPickedCategory ] = useState('');
 
 	const dispatch = useDispatch();
+	const state = useSelector((state) => state.categories);
+	const categories = state.categories;
+	console.log(categories);
 
 	const submitHandler = (e) => {
 		e.preventDefault();
@@ -42,9 +45,16 @@ const Navbar = () => {
 						<Dropdown.Toggle id="dropdown-basic">Category</Dropdown.Toggle>
 
 						<Dropdown.Menu>
-							<Dropdown.Item eventKey="fruit">Fruit</Dropdown.Item>
-							<Dropdown.Item eventKey="grains">Grain</Dropdown.Item>
-							<Dropdown.Item eventKey="vegetable">Vegetable</Dropdown.Item>
+							{categories &&
+								categories.map((itemCat) => {
+									const { category, _id } = itemCat;
+
+									return (
+										<Dropdown.Item key={_id} eventKey={category}>
+											{category}
+										</Dropdown.Item>
+									);
+								})}
 						</Dropdown.Menu>
 					</Dropdown>
 					<form onSubmit={submitHandler}>

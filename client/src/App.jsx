@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 
 //redux
 import { fetchProducts } from './redux/actions/products';
+import { fetchCategories } from './redux/actions/categories';
 import { useDispatch, useSelector } from 'react-redux';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
 	const products = useSelector((state) => state.products);
 	useEffect(() => {
 		dispatch(fetchProducts());
+		dispatch(fetchCategories());
 	}, []);
 	return products.loading ? (
 		<Loading />
