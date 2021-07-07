@@ -1,5 +1,11 @@
 import axios from 'axios';
-import { FETCH_PRODUCTS_FAILURE, FETCH_PRODUCTS_REQUEST, FETCH_PRODUCTS_SUCCESS } from './types';
+import {
+	FETCH_PRODUCTS_FAILURE,
+	FETCH_PRODUCTS_REQUEST,
+	FETCH_PRODUCTS_SUCCESS,
+	FETCH_PRODUCT_DETAILS_SUCCESS,
+	FETCH_PRODUCTS_DETAILS_REQUEST,
+} from './types';
 
 export const fetchProductsRequest = () => (dispatch) => {
 	dispatch({
@@ -7,10 +13,23 @@ export const fetchProductsRequest = () => (dispatch) => {
 	});
 };
 
+export const fetchProductsDetailsRequest = () => (dispatch) => {
+	dispatch({
+		type: FETCH_PRODUCTS_DETAILS_REQUEST,
+	});
+};
+
 export const fetchProductsSuccess = (products) => (dispatch) => {
 	dispatch({
 		type: FETCH_PRODUCTS_SUCCESS,
 		payload: products,
+	});
+};
+
+export const fetchProductDetailsSuccess = (product) => (dispatch) => {
+	dispatch({
+		type: FETCH_PRODUCT_DETAILS_SUCCESS,
+		payload: product,
 	});
 };
 
@@ -58,6 +77,20 @@ export const fetchProductsCategory = (category) => {
 			const products = await results.data;
 			console.log('PRODUCTS // category', products);
 			dispatch(fetchProductsSuccess(products));
+		} catch (error) {
+			const errorMsg = error.msg;
+			dispatch(fetchProductsFailure(errorMsg));
+		}
+	};
+};
+export const fetchSelectedProduct = (id) => {
+	return async (dispatch) => {
+		dispatch(fetchProductsDetailsRequest());
+		try {
+			const results = await axios.get(`/api/products/product/${id}`);
+			const product = await results.data;
+			console.log('PRODUCTS // id', product);
+			dispatch(fetchProductDetailsSuccess(product));
 		} catch (error) {
 			const errorMsg = error.msg;
 			dispatch(fetchProductsFailure(errorMsg));

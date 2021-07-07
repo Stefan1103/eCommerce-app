@@ -1,6 +1,13 @@
 import React from 'react';
+//compoonents
 import Carousel from 'react-bootstrap/Carousel';
+
+//react-router-dom
+import { Link } from 'react-router-dom';
+
+//redux
 import { useSelector } from 'react-redux';
+
 const Featured = () => {
 	const data = useSelector((state) => state.products);
 	const { products } = data;
@@ -27,7 +34,9 @@ const Featured = () => {
 										<h2>{discount} OFF !!</h2>
 										<h4>{price}</h4>
 										<h2>${discounted_price.toFixed(2)}</h2>
-										<button className="btn-add-cart">Learn more</button>
+										<Link to={`/product/${_id}`} className="btn-add-cart">
+											Learn more
+										</Link>
 									</Carousel.Caption>
 								</div>
 							</Carousel.Item>

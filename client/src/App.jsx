@@ -38,15 +38,12 @@ function App() {
 		<Router>
 			<div className="app">
 				<Navbar />
-
 				<div className="sections">
 					<Switch>
 						<Route exact path="/">
 							<LandingPage />
 						</Route>
-						<Route exact path="/product">
-							<Productdetails />
-						</Route>
+						<Route exact path="/product/:id" children={<Productdetails />} />
 						<Route>
 							<Error />
 						</Route>

@@ -1,7 +1,13 @@
 import React from 'react';
+//fontAWSOME
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
+
+//redux
 import { useSelector } from 'react-redux';
+
+//reac-router-dom
+import { Link } from 'react-router-dom';
 
 import Card from 'react-bootstrap/Card';
 
@@ -9,11 +15,10 @@ const Maincard = () => {
 	const data = useSelector((state) => state.products);
 	const { products } = data;
 	const mainCard = products.filter((product) => product.onSale === false);
-	console.log('VO CARD', mainCard);
 	return (
 		<main>
 			{mainCard.map((item) => {
-				const { image, name, price } = item;
+				const { image, name, price, _id } = item;
 
 				return (
 					<div className="customCard">
@@ -26,7 +31,9 @@ const Maincard = () => {
 									<span>/1kg</span>
 								</Card.Text>
 								<div className="btn-container">
-									<button className="btn-add-cart">Learn more</button>
+									<Link to={`/product/${_id}`} className="btn-add-cart">
+										Learn more
+									</Link>
 									<button className="btn-add-cart">
 										<FontAwesomeIcon icon={faCartPlus} />
 									</button>

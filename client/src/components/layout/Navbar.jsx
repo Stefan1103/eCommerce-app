@@ -13,9 +13,14 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import { fetchProductsSearch, fetchProductsCategory } from '../../redux/actions/products';
 import { useSelector, useDispatch } from 'react-redux';
 
+//reac-router-dom
+import { Link, useHistory } from 'react-router-dom';
+
 const Navbar = () => {
 	const [ searchName, setSearchName ] = useState('');
 	const [ pickedCategory, setPickedCategory ] = useState('');
+
+	let history = useHistory();
 
 	const dispatch = useDispatch();
 	const state = useSelector((state) => state.categories);
@@ -25,6 +30,7 @@ const Navbar = () => {
 	const submitHandler = (e) => {
 		e.preventDefault();
 		dispatch(fetchProductsSearch(searchName.charAt(0).toUpperCase() + searchName.slice(1)));
+		history.push('/');
 	};
 	const handleInput = (e) => {
 		const text = e.target.value;
@@ -41,7 +47,9 @@ const Navbar = () => {
 			<div className="navWrapper">
 				<div className="left">
 					<h2 className="logo">
-						<FontAwesomeIcon icon={faCloudMeatball} className="logo-i-style" /> Flea Market
+						<Link to="/">
+							<FontAwesomeIcon icon={faCloudMeatball} className="logo-i-style" /> Flea Market
+						</Link>
 					</h2>
 				</div>
 				<div className="middle">
@@ -55,7 +63,7 @@ const Navbar = () => {
 
 									return (
 										<Dropdown.Item key={_id} eventKey={category}>
-											{category}
+											<Link to="/">{category}</Link>
 										</Dropdown.Item>
 									);
 								})}
