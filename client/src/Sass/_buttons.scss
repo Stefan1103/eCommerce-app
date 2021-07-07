@@ -34,3 +34,19 @@
 		transform: scale(1.08);
 	}
 }
+.btn-back {
+	@extend %butn;
+	background-color: $triadic-orange-500;
+	color: $neutral-100;
+	font-weight: 400;
+	transition: transform 200ms ease;
+	border: none;
+
+	&:hover,
+	&:focus {
+		text-decoration: none;
+		color: $triadic-orange-500;
+		background-color: $neutral-900;
+		transform: scale(1.08);
+	}
+}
