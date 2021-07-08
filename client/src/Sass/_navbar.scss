@@ -84,6 +84,13 @@
 				border-radius: 50%;
 				font-size: .8rem;
 			}
+			a {
+				text-decoration: none;
+				color: $neutral-100;
+				&:hover {
+					color: $triadic-orange-500;
+				}
+			}
 		}
 	}
 }

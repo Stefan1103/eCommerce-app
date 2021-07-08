@@ -20,18 +20,17 @@ const Navbar = () => {
 	const [ searchName, setSearchName ] = useState('');
 	const [ pickedCategory, setPickedCategory ] = useState('');
 
-	let history = useHistory();
-
 	const dispatch = useDispatch();
 	const state = useSelector((state) => state.categories);
 	const categories = state.categories;
 	console.log(categories);
+	let history = useHistory();
 
 	const submitHandler = (e) => {
 		e.preventDefault();
 		dispatch(fetchProductsSearch(searchName.charAt(0).toUpperCase() + searchName.slice(1)));
-		history.push('/');
 	};
+
 	const handleInput = (e) => {
 		const text = e.target.value;
 		setSearchName(text);
@@ -41,13 +40,15 @@ const Navbar = () => {
 	};
 	if (pickedCategory !== '') {
 		dispatch(fetchProductsCategory(pickedCategory));
+		history.push('/');
 	}
+
 	return (
 		<div className="customNavbar">
 			<div className="navWrapper">
 				<div className="left">
 					<h2 className="logo">
-						<Link to="/">
+						<Link to="/" onClick={() => (window.location.href = '/')}>
 							<FontAwesomeIcon icon={faCloudMeatball} className="logo-i-style" /> Flea Market
 						</Link>
 					</h2>
@@ -77,7 +78,9 @@ const Navbar = () => {
 					</form>
 				</div>
 				<div className="right">
-					<FontAwesomeIcon icon={faShoppingCart} />
+					<Link to="/cart">
+						<FontAwesomeIcon icon={faShoppingCart} />
+					</Link>
 					<div className="cart">0</div>
 				</div>
 			</div>
