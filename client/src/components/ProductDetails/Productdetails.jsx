@@ -16,6 +16,7 @@ import { BrowserRouter as Router, Link } from 'react-router-dom';
 //redux
 import { fetchSelectedProduct } from '../../redux/actions/products';
 import { useSelector, useDispatch } from 'react-redux';
+import { addToCart } from '../../redux/actions/cart';
 
 const Productdetails = () => {
 	const { id } = useParams();
@@ -29,14 +30,18 @@ const Productdetails = () => {
 	console.log('selected product', selectedProduct);
 	const { name, image, calories, category, desc, price, discount, onSale } = selectedProduct;
 	let discounted_price;
+	console.log('UADAFAKPRICE', price);
+	let non_discounted_price = price.split('$');
 	if (!loadingDetails) {
 		if (onSale) {
 			const procentage = discount.split('%');
-			const non_discounted_price = price.split('$');
 			discounted_price = procentage[0] / 100 * non_discounted_price[1];
 			discounted_price = non_discounted_price[1] - discounted_price;
 		}
 	}
+	const detailsaddToCartHandler = (id) => {
+		dispatch(addToCart(id, discounted_price || non_discounted_price[1], name, image));
+	};
 
 	return loadingDetails ? (
 		<Loading />
@@ -108,7 +113,7 @@ const Productdetails = () => {
 					<FontAwesomeIcon className="pr-1" icon={faArrowLeft} />
 					Back
 				</Link>
-				<button className="btn-add-cart">
+				<button onClick={() => detailsaddToCartHandler(id)} className="btn-add-cart">
 					Add to cart <FontAwesomeIcon icon={faCartPlus} />
 				</button>
 			</div>

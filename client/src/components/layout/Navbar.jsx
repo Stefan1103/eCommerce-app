@@ -21,8 +21,10 @@ const Navbar = () => {
 	const [ pickedCategory, setPickedCategory ] = useState('');
 
 	const dispatch = useDispatch();
-	const state = useSelector((state) => state.categories);
-	const categories = state.categories;
+	const cat = useSelector((state) => state.categories);
+	const cart = useSelector((state) => state.cart);
+	const numberOfItemsInCart = cart.length;
+	const categories = cat.categories;
 	console.log(categories);
 	let history = useHistory();
 
@@ -81,7 +83,7 @@ const Navbar = () => {
 					<Link to="/cart">
 						<FontAwesomeIcon icon={faShoppingCart} />
 					</Link>
-					<div className="cart">0</div>
+					<div className="cart">{numberOfItemsInCart}</div>
 				</div>
 			</div>
 		</div>

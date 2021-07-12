@@ -4,7 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 
 //redux
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { addToCart } from '../../redux/actions/cart';
 
 //reac-router-dom
 import { Link } from 'react-router-dom';
@@ -13,12 +14,17 @@ import Card from 'react-bootstrap/Card';
 
 const Maincard = () => {
 	const data = useSelector((state) => state.products);
+	const dispatch = useDispatch();
 	const { products } = data;
 	const mainCard = products.filter((product) => product.onSale === false);
 	return (
 		<main>
 			{mainCard.map((item) => {
 				const { image, name, price, _id } = item;
+
+				const addToCartHandler = (_id) => {
+					dispatch(addToCart(_id, price, image, name));
+				};
 
 				return (
 					<div className="customCard">
@@ -34,7 +40,7 @@ const Maincard = () => {
 									<Link to={`/product/${_id}`} className="btn-add-cart">
 										Learn more
 									</Link>
-									<button className="btn-add-cart">
+									<button onClick={() => addToCartHandler(_id)} className="btn-add-cart">
 										<FontAwesomeIcon icon={faCartPlus} />
 									</button>
 								</div>
