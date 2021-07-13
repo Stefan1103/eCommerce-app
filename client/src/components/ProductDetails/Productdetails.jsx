@@ -31,16 +31,18 @@ const Productdetails = () => {
 	const { name, image, calories, category, desc, price, discount, onSale } = selectedProduct;
 	let discounted_price;
 	console.log('UADAFAKPRICE', price);
-	let non_discounted_price = price.split('$');
+	
 	if (!loadingDetails) {
 		if (onSale) {
+			let non_discounted_price = price.split('$');
 			const procentage = discount.split('%');
 			discounted_price = procentage[0] / 100 * non_discounted_price[1];
 			discounted_price = non_discounted_price[1] - discounted_price;
 		}
 	}
 	const detailsaddToCartHandler = (id) => {
-		dispatch(addToCart(id, discounted_price || non_discounted_price[1], name, image));
+		if(!loadingDetails)
+		dispatch(addToCart(id, discounted_price? parseFloat(discounted_price.toFixed(2)): parseFloat(price.split('$')[1]), name, image));
 	};
 
 	return loadingDetails ? (

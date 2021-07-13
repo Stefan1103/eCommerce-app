@@ -50,7 +50,8 @@ const Navbar = () => {
 			<div className="navWrapper">
 				<div className="left">
 					<h2 className="logo">
-						<Link to="/" onClick={() => (window.location.href = '/')}>
+					{/* onClick={() => (window.location.href = '/')} KJE RAZMISLIME DALI DA GO TURAM RELOADOT */}
+						<Link to="/" >
 							<FontAwesomeIcon icon={faCloudMeatball} className="logo-i-style" /> Flea Market
 						</Link>
 					</h2>
