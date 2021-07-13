@@ -31,7 +31,7 @@ const Productdetails = () => {
 	const { name, image, calories, category, desc, price, discount, onSale } = selectedProduct;
 	let discounted_price;
 	console.log('UADAFAKPRICE', price);
-	
+
 	if (!loadingDetails) {
 		if (onSale) {
 			let non_discounted_price = price.split('$');
@@ -41,8 +41,8 @@ const Productdetails = () => {
 		}
 	}
 	const detailsaddToCartHandler = (id) => {
-		if(!loadingDetails)
-		dispatch(addToCart(id, discounted_price? parseFloat(discounted_price.toFixed(2)): parseFloat(price.split('$')[1]), name, image));
+		if (!loadingDetails)
+			dispatch(addToCart(id, discounted_price ? parseFloat(discounted_price.toFixed(2)) : parseFloat(price.split('$')[1]), name, image));
 	};
 
 	return loadingDetails ? (

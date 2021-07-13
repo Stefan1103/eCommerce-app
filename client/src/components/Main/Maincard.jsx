@@ -23,7 +23,7 @@ const Maincard = () => {
 				const { image, name, price, _id } = item;
 
 				const addToCartHandler = (_id) => {
-					dispatch(addToCart(_id, price, image, name));
+					dispatch(addToCart(_id, price, name, image));
 				};
 
 				return (
