@@ -1,5 +1,5 @@
 //react
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 //assets
 import shopingCart from '../../assets/shopping-cart.png';
@@ -7,9 +7,12 @@ import shopingCart from '../../assets/shopping-cart.png';
 //redux
 import { useSelector, useDispatch } from 'react-redux';
 import React from 'react';
+import { addToCart, removeFromCart, removeOneFromCart } from '../../redux/actions/cart';
 
 const Cart = () => {
+	const dispatch = useDispatch();
 	const cartItems = useSelector((state) => state.cart);
+	const [ numItems, setNumItems ] = useState([]);
 
 	const distinct = [];
 	const map = new Map();
@@ -26,6 +29,21 @@ const Cart = () => {
 	}
 	console.log(distinct);
 	console.log('unique niza', distinct);
+
+	useEffect(
+		() => {
+			setNumItems(
+				cartItems.map((item) => {
+					const { id, price } = item;
+					return { id, price };
+				}),
+			);
+		},
+		[ cartItems ],
+		[],
+	);
+
+	console.log('numitems', numItems);
 	return (
 		<div className="container">
 			<div className="wrapper-cart row">
@@ -36,14 +54,19 @@ const Cart = () => {
 					<h1>Your Cart</h1>
 					{distinct.map((item) => {
 						const { id, image, name, price } = item;
+						const filteredItems = numItems.filter((item) => item.id === id);
+						console.log(filteredItems);
 
-						const numItems = cartItems.filter((cartItem) => cartItem.id === id);
-						// probaj so stejt so removeov mozgaj go so if za vo reducer na 0 etc
 						const removeHandle = () => {
-							numItems.pop();
+							dispatch(removeOneFromCart(id));
+							filteredItems.shift();
+							setNumItems(filteredItems);
 						};
-						let qty = numItems.length;
+						let qty = filteredItems.length;
 						console.log(qty);
+						const addHandle = () => {
+							dispatch(addToCart(id, price, name, image));
+						};
 
 						return (
 							<ul>
@@ -60,7 +83,7 @@ const Cart = () => {
 										</div>
 										<div className="cart-item-btn-container col-5">
 											<button onClick={removeHandle}>remove</button>
-											<button>add</button>
+											<button onClick={addHandle}>add</button>
 											<textbox>{qty}</textbox>
 										</div>
 									</div>
