@@ -4,6 +4,10 @@ import { useState, useEffect } from 'react';
 //assets
 import shopingCart from '../../assets/shopping-cart.png';
 
+//fontawsome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartPlus, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+
 //redux
 import { useSelector, useDispatch } from 'react-redux';
 import React from 'react';
@@ -57,7 +61,7 @@ const Cart = () => {
 						const filteredItems = numItems.filter((item) => item.id === id);
 						console.log(filteredItems);
 
-						const removeHandle = () => {
+						const removeSingleHandle = () => {
 							dispatch(removeOneFromCart(id));
 							filteredItems.shift();
 							setNumItems(filteredItems);
@@ -66,6 +70,9 @@ const Cart = () => {
 						console.log(qty);
 						const addHandle = () => {
 							dispatch(addToCart(id, price, name, image));
+						};
+						const removeHandle = () => {
+							dispatch(removeFromCart(id));
 						};
 
 						return (
@@ -77,13 +84,24 @@ const Cart = () => {
 												<img className="img-fluid img-thumbnail" src={image} />
 											</div>
 											<div className="cart-item-details">
-												<h3>name: {name}</h3>
-												<h2>price: {price}</h2>
+												<h3>
+													name: <span className="name-span">{name}</span>
+												</h3>
+												<h3>
+													price: <span className="price-span">{price}/1kg</span>
+												</h3>
 											</div>
 										</div>
 										<div className="cart-item-btn-container col-5">
-											<button onClick={removeHandle}>remove</button>
-											<button onClick={addHandle}>add</button>
+											<button className="btn-add-cart" onClick={addHandle}>
+												add <FontAwesomeIcon icon={faCartPlus} />
+											</button>
+											<button className="btn-remove" onClick={removeSingleHandle}>
+												remove
+											</button>
+											<button className="btn-remove" onClick={removeHandle}>
+												X
+											</button>
 											<textbox>{qty}</textbox>
 										</div>
 									</div>
@@ -93,6 +111,8 @@ const Cart = () => {
 					})}
 				</div>
 			</div>
+			<hr className="style-details-cart" />
+			<div className="wrapper-calc row">afeseg</div>
 		</div>
 	);
 };
