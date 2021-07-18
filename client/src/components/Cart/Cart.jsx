@@ -8,16 +8,35 @@ import shopingCart from '../../assets/shopping-cart.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
+//react-router-dom
+import { useHistory } from 'react-router-dom';
+
 //redux
 import { useSelector, useDispatch } from 'react-redux';
-import React from 'react';
 import { addToCart, removeFromCart, removeOneFromCart } from '../../redux/actions/cart';
 
 const Cart = () => {
 	const dispatch = useDispatch();
 	const cartItems = useSelector((state) => state.cart);
-	const [ numItems, setNumItems ] = useState([]);
+	let filteredItems;
+	let history = useHistory();
 
+	const prevPathHandle = () => {
+		history.goBack();
+	};
+
+	const addHandle = (id, price, name, image) => {
+		dispatch(addToCart(id, price, name, image));
+	};
+	const removeHandle = (id) => {
+		dispatch(removeFromCart(id));
+	};
+	const removeSingleHandle = (id) => {
+		dispatch(removeOneFromCart(id));
+		filteredItems.shift();
+	};
+
+	// distinct array that gives the unique items from cartItems array
 	const distinct = [];
 	const map = new Map();
 	for (const item of cartItems) {
@@ -31,23 +50,6 @@ const Cart = () => {
 			});
 		}
 	}
-	console.log(distinct);
-	console.log('unique niza', distinct);
-
-	useEffect(
-		() => {
-			setNumItems(
-				cartItems.map((item) => {
-					const { id, price } = item;
-					return { id, price };
-				}),
-			);
-		},
-		[ cartItems ],
-		[],
-	);
-
-	console.log('numitems', numItems);
 	return (
 		<div className="container">
 			<div className="wrapper-cart row">
@@ -58,22 +60,8 @@ const Cart = () => {
 					<h1>Your Cart</h1>
 					{distinct.map((item) => {
 						const { id, image, name, price } = item;
-						const filteredItems = numItems.filter((item) => item.id === id);
-						console.log(filteredItems);
-
-						const removeSingleHandle = () => {
-							dispatch(removeOneFromCart(id));
-							filteredItems.shift();
-							setNumItems(filteredItems);
-						};
+						filteredItems = cartItems.filter((item) => item.id === id);
 						let qty = filteredItems.length;
-						console.log(qty);
-						const addHandle = () => {
-							dispatch(addToCart(id, price, name, image));
-						};
-						const removeHandle = () => {
-							dispatch(removeFromCart(id));
-						};
 
 						return (
 							<ul>
@@ -93,13 +81,13 @@ const Cart = () => {
 											</div>
 										</div>
 										<div className="cart-item-btn-container col-5">
-											<button className="btn-add-cart" onClick={addHandle}>
+											<button className="btn-add-cart" onClick={() => addHandle(id, price, name, image)}>
 												add <FontAwesomeIcon icon={faCartPlus} />
 											</button>
-											<button className="btn-remove" onClick={removeSingleHandle}>
+											<button className="btn-remove" onClick={() => removeSingleHandle(id)}>
 												remove
 											</button>
-											<button className="btn-remove" onClick={removeHandle}>
+											<button className="btn-remove" onClick={() => removeHandle(id)}>
 												X
 											</button>
 											<textbox>{qty}</textbox>
@@ -112,7 +100,17 @@ const Cart = () => {
 				</div>
 			</div>
 			<hr className="style-details-cart" />
-			<div className="wrapper-calc row">afeseg</div>
+			<div className="wrapper-calc row">
+				<div className="calc-container col-12">
+					<button onClick={prevPathHandle} className="btn-back">
+						<FontAwesomeIcon icon={faArrowLeft} /> Back
+					</button>
+					<textbox>
+						Your total price : <span>$1234</span>
+					</textbox>
+					<button>Cash out</button>
+				</div>
+			</div>
 		</div>
 	);
 };

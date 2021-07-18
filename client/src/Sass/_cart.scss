@@ -68,5 +68,11 @@
 	}
 }
 
-// .wrapper-calc {
-// }
+.wrapper-calc {
+	width: 100%;
+	.calc-container {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+	}
+}

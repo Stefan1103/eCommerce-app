@@ -101,7 +101,7 @@ const Productdetails = () => {
 						{onSale ? (
 							<li>
 								<h3>
-									special price: <span>{discounted_price.toFixed(2)}</span>
+									special price: <span>${discounted_price.toFixed(2)}</span>
 								</h3>
 							</li>
 						) : (
