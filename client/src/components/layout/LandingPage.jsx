@@ -6,8 +6,8 @@ import React from 'react';
 const LandingPage = () => {
 	return (
 		<React.Fragment>
-			<Featured />
 			<div className="container">
+				<Featured />
 				<CustomAlert />
 				<Maincard />
 			</div>

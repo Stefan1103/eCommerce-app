@@ -10,31 +10,42 @@ main {
 		margin: 1rem;
 		.card {
 			overflow: hidden;
-			transition: all 750ms ease;
-			border: 2px solid $triadic-orange-500;
+
+			border: 3px solid $triadic-orange-500;
 			width: 18rem;
 			height: 25rem;
-			&:hover,
-			&:focus {
-				transform: scale(1.05);
-				border: 3px solid $triadic-red-400;
-			}
 
 			.card-body {
 				display: flex;
 				flex-direction: column;
 				justify-content: space-between;
-				background-image: linear-gradient($neutral-100, lighten($triadic-yellow-600, 20%), lighten($triadic-orange-500, 20%));
+				background-image: linear-gradient($neutral-100, lighten($triadic-orange-500, 30%));
 
 				.card-title {
 					font-size: 2rem;
 					font-weight: 700;
 					color: $neutral-900;
+					position: relative;
+
+					&::after {
+						content: "";
+						position: absolute;
+						height: 3px;
+						bottom: -3px;
+						width: 100%;
+						opacity: 0.8;
+						background: $triadic-orange-500;
+						left: 0;
+						transform-origin: center;
+						transform: scale(0);
+						transition: transform .5s ease;
+					}
 				}
 				.card-text {
 					color: $triadic-red-400;
-					font-size: 1.2rem;
+					font-size: 1.5rem;
 					font-weight: 600;
+					position: relative;
 					span {
 						color: $neutral-900;
 						font-weight: 500;
@@ -43,6 +54,20 @@ main {
 				.btn-container {
 					display: flex;
 					justify-content: space-between;
+				}
+			}
+		}
+		@media (hover) {
+			.card {
+				transition: all 750ms ease;
+				&:hover,
+				&:focus-within {
+					transform: scale(1.05);
+					border: 3px solid $triadic-red-400;
+				}
+				&:hover > .card-body > .card-title::after {
+					transform: scale(1);
+					background: $triadic-red-400;
 				}
 			}
 		}

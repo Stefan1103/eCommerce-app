@@ -93,7 +93,8 @@ const Cart = () => {
 														name: <span className="name-span">{name}</span>
 													</h3>
 													<h3>
-														price: <span className="price-span">{price}/1kg</span>
+														price:{' '}
+														<span className="price-span">{typeof price !== 'number' ? price : `$${price}`}/1kg</span>
 													</h3>
 												</div>
 											</div>
@@ -131,7 +132,7 @@ const Cart = () => {
 							Empty the cart
 						</button>
 						<button className="btn-add-cart ml-3">
-							Cash out <FontAwesomeIcon icon={faArrowRight} />
+							Pay <FontAwesomeIcon icon={faArrowRight} />
 						</button>
 					</div>
 				</div>
