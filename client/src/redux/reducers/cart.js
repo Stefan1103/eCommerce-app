@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART, REMOVE_ONE_FROM_CART } from '../actions/types';
+import { ADD_TO_CART, REMOVE_FROM_CART, REMOVE_ONE_FROM_CART, EMPTY_CART } from '../actions/types';
 
 const initialState = [];
 
@@ -25,6 +25,8 @@ const cart = (state = initialState, action) => {
 			const num = findLastIndx(newArr, payload);
 			newArr.splice(num, num >= 0 ? 1 : 0);
 			return newArr;
+		case EMPTY_CART:
+			return [];
 		default:
 			return state;
 	}

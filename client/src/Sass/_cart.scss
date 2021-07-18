@@ -7,6 +7,11 @@
 
 	.wrapper-cart {
 		margin-top: 5rem;
+		h1 {
+			font-weight: 800;
+			color: darken($color: $triadic-orange-500, $amount: 5);
+			text-align: center;
+		}
 
 		.img-container-cart {
 			margin-top: 7rem;
@@ -15,12 +20,21 @@
 			}
 		}
 		.cart-items {
-			h1 {
-				font-weight: 800;
-				color: darken($color: $triadic-orange-500, $amount: 5);
+			.empty-cart {
+				height: 100%;
+				width: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				h2 {
+					font-size: 2.2rem;
+					color: darken($color: $triadic-red-400, $amount: 10%);
+					font-weight: 700;
+				}
 			}
 			ul {
 				list-style: none;
+				margin-top: 3rem;
 				li {
 					.cart-items-container {
 						display: flex;
@@ -70,9 +84,20 @@
 
 .wrapper-calc {
 	width: 100%;
+	margin-bottom: 3rem;
 	.calc-container {
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
+
+		textbox {
+			font-size: 1.5rem;
+			font-weight: 500;
+			color: $neutral-900;
+			span {
+				font-weight: 800;
+				color: $triadic-red-400;
+			}
+		}
 	}
 }
