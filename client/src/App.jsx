@@ -9,6 +9,7 @@ import Loading from './components/Loading/Loading';
 import Error from './components/Error/Error';
 import Productdetails from './components/ProductDetails/Productdetails';
 import Cart from './components/Cart/Cart';
+import Checkout from './components/Checkout/Checkout';
 
 //react-router
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -46,8 +47,11 @@ function App() {
 							<LandingPage />
 						</Route>
 						<Route exact path="/product/:id" children={<Productdetails />} />
-						<Route exact patyh="/cart">
+						<Route exact path="/cart">
 							<Cart />
+						</Route>
+						<Route exact path="/cart/checkout">
+							<Checkout />
 						</Route>
 						<Route>
 							<Error />

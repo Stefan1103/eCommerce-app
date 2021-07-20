@@ -6,11 +6,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus, faArrowLeft, faArrowRight, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
 //react-router-dom
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 //redux
 import { useSelector, useDispatch } from 'react-redux';
+import { setAlert } from '../../redux/actions/alert';
 import { addToCart, removeFromCart, removeOneFromCart, emptyCart } from '../../redux/actions/cart';
+
+//components
+import CustomAlert from '../layout/CustomAlert';
 
 const Cart = () => {
 	const dispatch = useDispatch();
@@ -35,6 +39,10 @@ const Cart = () => {
 	};
 	const emptyCartHandle = () => {
 		dispatch(emptyCart());
+	};
+
+	const noItemsHandle = () => {
+		dispatch(setAlert('please add items to your cart in order to checkout !!', 'danger'));
 	};
 
 	if (cartItems.length <= 0) {
@@ -71,6 +79,7 @@ const Cart = () => {
 				<div className="cart-items col-8">
 					{cartItems.length <= 0 ? (
 						<div className="empty-cart">
+							<CustomAlert />
 							<h2>
 								Your cart is empty !! <FontAwesomeIcon icon={faExclamationTriangle} />
 							</h2>
@@ -131,9 +140,15 @@ const Cart = () => {
 						<button onClick={emptyCartHandle} className="btn-remove">
 							Empty the cart
 						</button>
-						<button className="btn-add-cart ml-3">
-							Pay <FontAwesomeIcon icon={faArrowRight} />
-						</button>
+						{cartItems.length <= 0 ? (
+							<button onClick={noItemsHandle} className=" btn-add-cart ml-3">
+								Checkout <FontAwesomeIcon icon={faArrowRight} />
+							</button>
+						) : (
+							<Link to="/cart/checkout" className="btn-add-cart ml-3">
+								Checkout <FontAwesomeIcon icon={faArrowRight} />
+							</Link>
+						)}
 					</div>
 				</div>
 			</div>

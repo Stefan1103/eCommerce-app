@@ -1,0 +1,18 @@
+.container {
+	margin-bottom: 3rem;
+	.wrapper-checkout {
+		margin-top: 2rem;
+		.checkout-jumbotron {
+			padding-top: 2rem;
+			padding-bottom: 2rem;
+			.inner-wrapper-checkout {
+				form {
+					margin: 1rem;
+					input {
+						width: 40%;
+					}
+				}
+			}
+		}
+	}
+}

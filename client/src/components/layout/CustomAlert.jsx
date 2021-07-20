@@ -12,7 +12,7 @@ const CustomAlert = () => {
 					const { msg, alertType, id } = alert;
 					return (
 						<Alert key={id} variant={alertType}>
-							<p style={{ textAlign: 'center' }}>{msg}</p>
+							<p style={{ textAlign: 'center', fontWeight: 600 }}>{msg}</p>
 						</Alert>
 					);
 				})}
