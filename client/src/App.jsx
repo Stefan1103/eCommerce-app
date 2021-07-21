@@ -10,6 +10,7 @@ import Error from './components/Error/Error';
 import Productdetails from './components/ProductDetails/Productdetails';
 import Cart from './components/Cart/Cart';
 import Checkout from './components/Checkout/Checkout';
+import Billing from './components/Checkout/Billing/Billing';
 
 //react-router
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -52,6 +53,9 @@ function App() {
 						</Route>
 						<Route exact path="/cart/checkout">
 							<Checkout />
+						</Route>
+						<Route exact path="/cart/checkout/billing">
+							<Billing />
 						</Route>
 						<Route>
 							<Error />
