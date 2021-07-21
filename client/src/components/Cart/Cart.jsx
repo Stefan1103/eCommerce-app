@@ -18,7 +18,8 @@ import CustomAlert from '../layout/CustomAlert';
 
 const Cart = () => {
 	const dispatch = useDispatch();
-	const cartItems = useSelector((state) => state.cart);
+	const stateCart = useSelector((state) => state.cart);
+	const cartItems = stateCart.cartItems;
 	let filteredItems;
 	let total;
 	let history = useHistory();

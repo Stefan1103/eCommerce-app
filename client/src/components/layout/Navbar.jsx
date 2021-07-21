@@ -23,7 +23,7 @@ const Navbar = () => {
 	const dispatch = useDispatch();
 	const cat = useSelector((state) => state.categories);
 	const cart = useSelector((state) => state.cart);
-	const numberOfItemsInCart = cart.length;
+	const numberOfItemsInCart = cart.cartItems.length;
 	const categories = cat.categories;
 	console.log(categories);
 	let history = useHistory();
@@ -50,8 +50,8 @@ const Navbar = () => {
 			<div className="navWrapper">
 				<div className="left">
 					<h2 className="logo">
-					{/* onClick={() => (window.location.href = '/')} KJE RAZMISLIME DALI DA GO TURAM RELOADOT */}
-						<Link to="/" >
+						{/* onClick={() => (window.location.href = '/')} KJE RAZMISLIME DALI DA GO TURAM RELOADOT */}
+						<Link to="/">
 							<FontAwesomeIcon icon={faCloudMeatball} className="logo-i-style" /> Flea Market
 						</Link>
 					</h2>
