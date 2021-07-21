@@ -11,7 +11,7 @@ import { Link, useHistory } from 'react-router-dom';
 //redux
 import { useSelector, useDispatch } from 'react-redux';
 import { setAlert } from '../../redux/actions/alert';
-import { addToCart, removeFromCart, removeOneFromCart, emptyCart } from '../../redux/actions/cart';
+import { addToCart, removeFromCart, removeOneFromCart, emptyCart, setTotal } from '../../redux/actions/cart';
 
 //components
 import CustomAlert from '../layout/CustomAlert';
@@ -42,8 +42,13 @@ const Cart = () => {
 		dispatch(emptyCart());
 	};
 
-	const noItemsHandle = () => {
-		dispatch(setAlert('please add items to your cart in order to checkout !!', 'danger'));
+	const checkoutHandle = () => {
+		if (cartItems.length <= 0) {
+			dispatch(setAlert('please add items to your cart in order to checkout !!', 'danger'));
+		} else {
+			dispatch(setTotal(total));
+			history.push('/cart/checkout');
+		}
 	};
 
 	if (cartItems.length <= 0) {
@@ -141,15 +146,10 @@ const Cart = () => {
 						<button onClick={emptyCartHandle} className="btn-remove">
 							Empty the cart
 						</button>
-						{cartItems.length <= 0 ? (
-							<button onClick={noItemsHandle} className=" btn-add-cart ml-3">
-								Checkout <FontAwesomeIcon icon={faArrowRight} />
-							</button>
-						) : (
-							<Link to="/cart/checkout" className="btn-add-cart ml-3">
-								Checkout <FontAwesomeIcon icon={faArrowRight} />
-							</Link>
-						)}
+
+						<button onClick={checkoutHandle} className=" btn-add-cart ml-3">
+							Checkout <FontAwesomeIcon icon={faArrowRight} />
+						</button>
 					</div>
 				</div>
 			</div>
