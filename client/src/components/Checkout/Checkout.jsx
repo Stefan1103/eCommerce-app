@@ -1,3 +1,6 @@
+//react
+import { useRef, useState } from 'react';
+
 //fontawsome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -5,11 +8,33 @@ import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 //react-router-dom
 import { Link, useHistory } from 'react-router-dom';
 
+//redux
+import { useSelector, useDispatch } from 'react-redux';
+import { setTotal } from '../../redux/actions/cart';
+
 const Checkout = () => {
 	let history = useHistory();
+	let radios = document.getElementsByName('shippingMethod');
+	const [ shpMethod, setshpMethod ] = useState({ method: '', shpPrice: 0 });
+
+	const cart = useSelector((state) => state.cart);
+	const dispatch = useDispatch();
+
+	let total = parseFloat(cart.total.toFixed(2));
+	console.log('TOTALAKGKASEOG', total);
+	console.log('SHPPRICE', shpMethod.shpPrice);
+
+	const radioHandle = () => {
+		for (let i = 0; i < radios.length; i++) {
+			if (radios[i].checked) {
+				setshpMethod({ method: radios[i].value, shpPrice: radios[i].value === 'EXPRESS' ? 10 : 0 });
+			}
+		}
+	};
 
 	const submitHandler = (e) => {
 		e.preventDefault();
+		dispatch(setTotal(total + shpMethod.shpPrice));
 		history.push('/cart/checkout/billing');
 		// dispatch post request to handle on the backend with the info of the form for the shipping details
 	};
@@ -25,11 +50,11 @@ const Checkout = () => {
 							<label className="col-3" for="firstName">
 								First name<span className="required-star">*</span>{' '}
 							</label>
-							<input className="col-8 offset-3" id="firstName" type="text" placeholder="Aleksandar" required />
+							<input className="col-8 offset-3" id="firstName" type="text" placeholder="James" required />
 							<label className="col-3" for="lastName">
 								Last name<span className="required-star">*</span>{' '}
 							</label>
-							<input className="col-8 offset-3" id="lastName" type="text" placeholder="Bogatinov" required />
+							<input className="col-8 offset-3" id="lastName" type="text" placeholder="Dean" required />
 							<label className="col-3" for="postalCode">
 								Postal Code<span className="required-star">*</span>{' '}
 							</label>
@@ -37,29 +62,29 @@ const Checkout = () => {
 							<label className="col-3" for="address1">
 								Address:<span className="required-star">*</span>{' '}
 							</label>
-							<input className="col-8 offset-3" id="address1" type="text" placeholder="street Franz Preshern 14B" required />
+							<input className="col-8 offset-3" id="address1" type="text" placeholder=" Abbey Road 14B" required />
 							<label className="col-3" for="address2">
 								Address<span>(optional)</span>{' '}
 							</label>
-							<input className="col-8 offset-3" id="address2" type="text" placeholder="street Rafael Batino 25A" />
+							<input className="col-8 offset-3" id="address2" type="text" placeholder="Brick Lane 25A" />
 							<label className="col-3" for="city">
 								City<span className="required-star">*</span>{' '}
 							</label>
-							<input className="col-8 offset-3" id="city" type="text" placeholder="Skopje" required />
+							<input className="col-8 offset-3" id="city" type="text" placeholder="London" required />
 							<h5 className="col-12">
 								Select shipping method<span className="required-star">*</span>{' '}
 							</h5>
-							<div className="standard col-12">
-								<input className="col-2" type="radio" name="shippingMethod" id="standard" value="STANDARD" required />
-								<label className="col-2" for="standard">
-									Standard
+							<div className="free col-12">
+								<input onChange={radioHandle} className="col-2" type="radio" name="shippingMethod" id="free" value="FREE" required />
+								<label className="col-2" for="free">
+									FREE<span>(14days)</span>
 								</label>
 							</div>
 
 							<div className="express col-12">
-								<input className="col-2" type="radio" id="express" name="shippingMethod" value="EXPRESS" />
+								<input onChange={radioHandle} className="col-2" type="radio" id="express" name="shippingMethod" value="EXPRESS" />
 								<label className="col-2" for="express">
-									Express<span>(10$)</span>
+									Express<span>(1day 10$)</span>
 								</label>
 							</div>
 
@@ -89,8 +114,10 @@ const Checkout = () => {
 						</div>
 						<div className="summary-content">
 							<ul>
-								<li>Shipping method: </li>
-								<li>total: 123465$</li>
+								<li>Shipping method: {shpMethod.method}</li>
+								<li>Shipping price: ${shpMethod.shpPrice}</li>
+								<li>cart total: ${total}</li>
+								<li>total: ${total + shpMethod.shpPrice}</li>
 							</ul>
 						</div>
 					</div>
