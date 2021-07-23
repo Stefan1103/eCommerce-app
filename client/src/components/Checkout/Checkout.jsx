@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 
 //fontawsome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faArrowRight, faPen } from '@fortawesome/free-solid-svg-icons';
 
 //react-router-dom
 import { Link, useHistory } from 'react-router-dom';
@@ -11,6 +11,7 @@ import { Link, useHistory } from 'react-router-dom';
 //redux
 import { useSelector, useDispatch } from 'react-redux';
 import { setTotal } from '../../redux/actions/cart';
+import React from 'react';
 
 const Checkout = () => {
 	let history = useHistory();
@@ -18,7 +19,24 @@ const Checkout = () => {
 	const [ shpMethod, setshpMethod ] = useState({ method: '', shpPrice: 0 });
 
 	const cart = useSelector((state) => state.cart);
+	const cartItems = cart.cartItems;
+	console.log(cartItems);
 	const dispatch = useDispatch();
+
+	// distinct items from cartItems
+	const distinct = [];
+	const map = new Map();
+	for (const item of cartItems) {
+		if (!map.has(item.id)) {
+			map.set(item.id, true);
+			distinct.push({
+				id: item.id,
+				name: item.name,
+				price: item.price,
+				image: item.image,
+			});
+		}
+	}
 
 	let total = parseFloat(cart.total.toFixed(2));
 	console.log('TOTALAKGKASEOG', total);
@@ -42,9 +60,7 @@ const Checkout = () => {
 		<div className="container">
 			<div className="wrapper-checkout row">
 				<div className="checkout-jumbotron col-8 bg-light">
-					<div className="title-shipping col-12">
-						<h3>SHIPPING</h3>
-					</div>
+					<h3>SHIPPING</h3>
 					<div className="inner-wrapper-checkout col-12 bg-white">
 						<form id="shipping-form" onSubmit={submitHandler}>
 							<label className="col-3" for="firstName">
@@ -114,24 +130,55 @@ const Checkout = () => {
 						</div>
 						<div className="summary-content">
 							<ul>
-								<li>Shipping method: {shpMethod.method}</li>
-								<li>Shipping price: ${shpMethod.shpPrice}</li>
-								<li>cart total: ${total}</li>
-								<li>total: ${total + shpMethod.shpPrice}</li>
+								<li>
+									Shipping method: <span id="shp-method">{shpMethod.method}</span>
+								</li>
+								<li>
+									Shipping price: <span>${shpMethod.shpPrice}</span>
+								</li>
+								<li>
+									cart total: <span>${total}</span>
+								</li>
+								<li>
+									total: <span>${total + shpMethod.shpPrice}</span>
+								</li>
 							</ul>
 						</div>
 					</div>
 					<div className="inCart col-12">
 						<div className="inCart-title bg-light">
-							<h3>IN YOUR CART (5)</h3>
+							<h3>
+								IN YOUR CART (<span>{cartItems.length}</span>)
+							</h3>
 						</div>
 						<div className="inCart-content">
-							<img />
-							<ul>
-								<li>name : AHAUEGF</li>
-								<li>price: 123465$</li>
-							</ul>
+							{distinct.map((item) => {
+								const { id, image, price, name } = item;
+								let qty = cartItems.filter((item) => item.id === id);
+								console.log(qty);
+								return (
+									<React.Fragment>
+										<div className="inCart-content-items" key={id}>
+											<div className="img-container">
+												<img className="img-fluid" src={image} />
+											</div>
+											<div className="details-container">
+												<ul>
+													<li>name : {name}</li>
+													<li>
+														price: <span>{typeof price === 'string' ? price : `$${price}`}/1kg</span>
+													</li>
+													<li>quantity: {qty.length}</li>
+												</ul>
+											</div>
+										</div>
+									</React.Fragment>
+								);
+							})}
 						</div>
+						<Link className="edit-cart-link" to="/cart">
+							edit cart <FontAwesomeIcon icon={faPen} />
+						</Link>
 					</div>
 				</div>
 			</div>
