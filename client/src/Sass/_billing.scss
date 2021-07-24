@@ -1,0 +1,52 @@
+.container-billing {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 5rem;
+	margin-bottom: 2rem;
+	h1 {
+		font-size: 2.2rem;
+		padding-left: 1rem;
+		font-weight: 700;
+	}
+	.billing-wrapper {
+		width: 90%;
+		padding: 1rem 0;
+		.billing-wrapper-inner {
+			background: $neutral-100;
+			form {
+				padding: .5rem;
+				input {
+					/* Chrome, Safari, Edge, Opera */
+					&::-webkit-outer-spin-button,
+					&::-webkit-inner-spin-button {
+						-webkit-appearance: none;
+						margin: 0;
+					}
+					/* Firefox */
+					&[type=number] {
+						-moz-appearance: textfield;
+					}
+				}
+				input,
+				select,
+				label {
+					margin-top: .5rem;
+					width: 40%;
+				}
+				.left {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+				}
+				.right {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+				}
+			}
+		}
+	}
+}
