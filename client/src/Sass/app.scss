@@ -3,6 +3,9 @@
 @import "~bootstrap/scss/bootstrap";
 @import "./buttons";
 
+//responsive layout
+@import "./mediaglobal";
+
 // component styles
 @import "./loading";
 @import "./error";
@@ -15,5 +18,3 @@
 @import "./cart";
 @import "./checkout";
 @import "./billing";
-
-//media -responsive

@@ -1,0 +1,41 @@
+@mixin reducedMotion {
+	@media (prefers-reduced-motion: reduce) {
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01 !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+			scroll-behavior: auto !important;
+			transition-delay: 0ms !important;
+		}
+	}
+}
+
+@mixin laptop {
+	@media (max-width: #{$width-laptop}) {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@media (max-width: #{$width-tablet}) {
+		@content;
+	}
+}
+
+@mixin tabletSM {
+	@media (max-width: #{$width-tablet-sm}) {
+		@content;
+	}
+}
+@mixin mobileM {
+	@media (max-width: #{$width-mobile-m}) {
+		@content;
+	}
+}
+@mixin mobileSM {
+	@media (max-width: #{$width-mobile-sm}) {
+		@content;
+	}
+}

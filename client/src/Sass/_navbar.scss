@@ -29,6 +29,12 @@
 					color: $triadic-orange-500;
 					padding: 5px;
 				}
+				@include tablet {
+					font-size: 1.7rem;
+				}
+				@include tabletSM {
+					display: none;
+				}
 			}
 		}
 		.middle {
@@ -61,6 +67,13 @@
 				height: 90%;
 				display: flex;
 				align-items: center;
+
+				@include mobileM {
+					button {
+						display: none;
+					}
+				}
+
 				input {
 					width: 29rem;
 					height: 1.9rem;
@@ -68,6 +81,15 @@
 					border: none;
 					border-radius: .2rem;
 					margin-right: 1rem;
+					@include laptop {
+						width: 20rem;
+					}
+					@include tablet {
+						width: 12rem;
+					}
+					@include mobileSM {
+						width: 6rem;
+					}
 				}
 			}
 		}
