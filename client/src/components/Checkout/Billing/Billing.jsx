@@ -1,12 +1,24 @@
-import React from 'react';
+// redux
+import { useSelector } from 'react-redux';
 
 const Billing = () => {
+	const cart = useSelector((state) => state.cart);
+	const total = cart.total;
+
+	const paymentHandle = (e) => {
+		e.preventDefault();
+		// SEND THE INFO TO BACKEND for validation and onwards to do the payment if good
+	};
 	return (
 		<div className="container container-billing">
 			<div className="billing-wrapper bg-light">
-				<h1>PAYMENT</h1>
+				<div className="title-section">
+					<h1>PAYMENT</h1>
+					<h2>${total}</h2>
+				</div>
+
 				<div className="billing-wrapper-inner">
-					<form className=" row col-12" id="payment">
+					<form className=" row col-12" id="payment" onSubmit={paymentHandle}>
 						<div className="left col-6">
 							<label for="creditCardHolder">Credit Card Holder :</label>
 							<label for="creditCards">Choose a car:</label>
@@ -31,7 +43,9 @@ const Billing = () => {
 						</div>
 					</form>
 				</div>
-				<button className="btn-add-cart">Pay</button>
+				<button type="submit" className="btn-add-cart" form="payment">
+					Pay
+				</button>
 			</div>
 		</div>
 	);
