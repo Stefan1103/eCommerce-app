@@ -9,11 +9,25 @@
 	z-index: 1;
 	flex-shrink: 0;
 	border-top: 1px solid wheat;
+	@include mobileSM {
+		flex-direction: column;
+		height: 10rem;
+		align-items: center;
+		justify-content: space-between;
+	}
 	.left {
 		width: 60%;
+		@include mobileSM {
+			width: 50%;
+			text-align: center;
+		}
 	}
 	.right {
 		ul {
+			@include mobileSM {
+				text-align: center;
+				padding: 0;
+			}
 			list-style: none;
 			display: flex;
 			justify-content: space-between;

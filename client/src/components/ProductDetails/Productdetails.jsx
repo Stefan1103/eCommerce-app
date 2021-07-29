@@ -54,10 +54,10 @@ const Productdetails = () => {
 	) : (
 		<div className="container">
 			<div className="wrapper row">
-				<div className="img-container col-4">
+				<div className="img-container col-sm-4 col-xs-12">
 					<img className="img-fluid" src={image} alt="default" />
 				</div>
-				<div className="details-container col-8">
+				<div className="details-container col-sm-8 col-xs-12">
 					<h2>{name}</h2>
 					<hr className="style-details" />
 
