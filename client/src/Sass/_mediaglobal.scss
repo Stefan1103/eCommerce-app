@@ -23,12 +23,18 @@
 		@content;
 	}
 }
+@mixin tabletM {
+	@media (max-width: #{$width-tablet-m}) {
+		@content;
+	}
+}
 
 @mixin tabletSM {
 	@media (max-width: #{$width-tablet-sm}) {
 		@content;
 	}
 }
+
 @mixin mobileM {
 	@media (max-width: #{$width-mobile-m}) {
 		@content;

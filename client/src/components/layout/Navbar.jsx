@@ -74,7 +74,7 @@ const Navbar = () => {
 						</Dropdown.Menu>
 					</Dropdown>
 					<form onSubmit={submitHandler}>
-						<input onChange={handleInput} value={searchName} type="text" placeholder="search for products using name ex: Apple" />
+						<input onChange={handleInput} value={searchName} type="text" placeholder="search" />
 						<button className="btn-main" type="submit">
 							Search
 						</button>

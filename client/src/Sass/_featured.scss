@@ -18,19 +18,44 @@
 				text-decoration: line-through $triadic-red-400 3px;
 				font-weight: 600;
 				font-size: 1.7rem;
+
+				@include tabletM {
+					font-size: 1.3rem;
+					font-weight: 500;
+				}
 			}
 			h2 {
 				color: $triadic-red-400;
 				font-weight: 800;
+				@include tabletM {
+					font-weight: 700;
+					font-size: 1.7rem;
+				}
+				@include mobileSM {
+					font-size: 1.3rem;
+				}
 			}
 			h1 {
 				font-weight: 800;
 				font-size: 3rem;
+				@include tabletM {
+					font-size: 2rem;
+					font-weight: 700;
+				}
+				@include mobileSM {
+					font-size: 1.5rem;
+				}
 			}
 			p {
 				font-size: 1.8rem;
 				color: $neutral-100;
 				font-weight: 500;
+				@include tabletM {
+					font-size: 1.1rem;
+				}
+				@include mobileM {
+					display: none;
+				}
 			}
 
 			> * {
