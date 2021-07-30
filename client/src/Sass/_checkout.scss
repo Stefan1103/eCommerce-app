@@ -7,13 +7,12 @@
 			font-weight: 600;
 		}
 		.checkout-jumbotron {
-			max-height: 70vh;
 			padding-top: 1rem;
-			padding-bottom: 1rem;
+			padding-bottom: 7rem;
+			margin-bottom: 2rem;
 			display: flex;
 			flex-direction: column;
 			.inner-wrapper-checkout {
-				max-height: 58vh;
 				margin-bottom: 1rem;
 				form {
 					margin: 1rem;
@@ -42,6 +41,7 @@
 			}
 		}
 		.checkout-jumbotron-side {
+			margin-bottom: 1rem;
 			.summary {
 				.summary-content {
 					color: $neutral-900;

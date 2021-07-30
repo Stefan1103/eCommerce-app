@@ -59,59 +59,74 @@ const Checkout = () => {
 	return (
 		<div className="container">
 			<div className="wrapper-checkout row">
-				<div className="checkout-jumbotron col-8 bg-light">
+				<div className="bg-light checkout-jumbotron col-lg-8  col-md-12  order-1 order-lg-0">
 					<h3>SHIPPING</h3>
 					<div className="inner-wrapper-checkout col-12 bg-white">
 						<form id="shipping-form" onSubmit={submitHandler}>
-							<label className="col-3" for="firstName">
+							<label className=" col-12 col-md-3" for="firstName">
 								First name<span className="required-star">*</span>{' '}
 							</label>
-							<input className="col-8 offset-3" id="firstName" type="text" placeholder="James" required />
-							<label className="col-3" for="lastName">
+							<input className="col-12 col-md-8 offset-3" id="firstName" type="text" placeholder="James" required />
+							<label className="col-12 col-md-3" for="lastName">
 								Last name<span className="required-star">*</span>{' '}
 							</label>
-							<input className="col-8 offset-3" id="lastName" type="text" placeholder="Dean" required />
-							<label className="col-3" for="postalCode">
+							<input className="col-12 col-md-8 offset-3" id="lastName" type="text" placeholder="Dean" required />
+							<label className="col-12 col-md-3" for="postalCode">
 								Postal Code<span className="required-star">*</span>{' '}
 							</label>
-							<input className="col-8 offset-3" id="postalCode" type="text" placeholder="1000" required />
-							<label className="col-3" for="address1">
+							<input className="col-12 col-md-8 offset-3" id="postalCode" type="text" placeholder="1000" required />
+							<label className="col-12 col-md-3" for="address1">
 								Address:<span className="required-star">*</span>{' '}
 							</label>
-							<input className="col-8 offset-3" id="address1" type="text" placeholder=" Abbey Road 14B" required />
-							<label className="col-3" for="address2">
+							<input className="col-12 col-md-8 offset-3" id="address1" type="text" placeholder=" Abbey Road 14B" required />
+							<label className="col-12 col-md-3" for="address2">
 								Address<span>(optional)</span>{' '}
 							</label>
-							<input className="col-8 offset-3" id="address2" type="text" placeholder="Brick Lane 25A" />
-							<label className="col-3" for="city">
+							<input className="col-12 col-md-8 offset-3" id="address2" type="text" placeholder="Brick Lane 25A" />
+							<label className="col-12 col-md-3" for="city">
 								City<span className="required-star">*</span>{' '}
 							</label>
-							<input className="col-8 offset-3" id="city" type="text" placeholder="London" required />
+							<input className="col-12 col-md-8 offset-3" id="city" type="text" placeholder="London" required />
 							<h5 className="col-12">
 								Select shipping method<span className="required-star">*</span>{' '}
 							</h5>
 							<div className="free col-12">
-								<input onChange={radioHandle} className="col-2" type="radio" name="shippingMethod" id="free" value="FREE" required />
-								<label className="col-2" for="free">
+								<input
+									onChange={radioHandle}
+									className="col-5 col-md-2"
+									type="radio"
+									name="shippingMethod"
+									id="free"
+									value="FREE"
+									required
+								/>
+								<label className="col-5 col-md-2" for="free">
 									FREE<span>(14days)</span>
 								</label>
 							</div>
 
 							<div className="express col-12">
-								<input onChange={radioHandle} className="col-2" type="radio" id="express" name="shippingMethod" value="EXPRESS" />
-								<label className="col-2" for="express">
+								<input
+									onChange={radioHandle}
+									className="col-5 col-md-2"
+									type="radio"
+									id="express"
+									name="shippingMethod"
+									value="EXPRESS"
+								/>
+								<label className="col-5 col-md-2" for="express">
 									Express<span>(1day 10$)</span>
 								</label>
 							</div>
 
-							<label className="col-3" for="email">
+							<label className="col-12 col-md-3" for="email">
 								Email<span className="required-star">*</span>{' '}
 							</label>
-							<input className="col-8 offset-3" id="email" type="text" placeholder="big_chad@gmail.com" required />
-							<label className="col-3" for="phone">
+							<input className="col-12 col-md-8 offset-3" id="email" type="text" placeholder="big_chad@gmail.com" required />
+							<label className="col-12 col-md-3" for="phone">
 								Phone <span className="required-star">*</span>{' '}
 							</label>
-							<input className="col-8 offset-3" id="phone" type="text" placeholder="+389 __ ___ ___" required />
+							<input className="col-12 col-md-8 offset-3" id="phone" type="text" placeholder="+389 __ ___ ___" required />
 						</form>
 					</div>
 					<div className="bottom-container">
@@ -123,7 +138,7 @@ const Checkout = () => {
 						</button>
 					</div>
 				</div>
-				<div className="checkout-jumbotron-side col-4">
+				<div className="checkout-jumbotron-side col-lg-4 col-md-12">
 					<div className="summary col-12">
 						<div className="summary-title bg-light">
 							<h3>SUMMARY</h3>
