@@ -15,6 +15,7 @@
 
 		.img-container-cart {
 			margin-top: 7rem;
+			text-align: center;
 			img {
 				width: 18.75rem;
 			}
@@ -41,6 +42,9 @@
 						display: flex;
 						justify-content: start;
 						align-items: center;
+						@include tabletM {
+							justify-content: space-between;
+						}
 						.cart-item-specs {
 							display: flex;
 							align-items: center;
@@ -55,6 +59,9 @@
 								h3 {
 									color: $neutral-900;
 									font-size: 1.4rem;
+									@include mobileSM {
+										font-size: 1.1rem;
+									}
 									.name-span {
 										color: $triadic-orange-500;
 										font-weight: 500;
@@ -90,11 +97,31 @@
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
-
+		@include tabletM {
+			flex-direction: column;
+		}
+		.btn-back {
+			margin: .5rem auto;
+			@include mobileSM {
+				font-size: .8rem;
+			}
+		}
+		.buttons-calc {
+			@include mobileSM {
+				font-size: .8rem;
+			}
+		}
 		textbox {
+			margin: .5rem auto;
 			font-size: 1.5rem;
 			font-weight: 500;
 			color: $neutral-900;
+			@include tabletM {
+				order: -1;
+			}
+			@include mobileSM {
+				font-size: 1.3rem;
+			}
 			span {
 				font-weight: 800;
 				color: $triadic-red-400;

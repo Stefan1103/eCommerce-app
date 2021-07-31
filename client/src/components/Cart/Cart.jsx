@@ -79,10 +79,10 @@ const Cart = () => {
 		<div className="container">
 			<div className="wrapper-cart row">
 				<h1 className="col-12">Your Cart</h1>
-				<div className="img-container-cart col-4">
+				<div className="img-container-cart col-12 col-lg-4">
 					<img className="img-fluid" src={shopingCart} />
 				</div>
-				<div className="cart-items col-8">
+				<div className="cart-items col-12 col-lg-8">
 					{cartItems.length <= 0 ? (
 						<div className="empty-cart">
 							<CustomAlert />
@@ -98,8 +98,8 @@ const Cart = () => {
 							return (
 								<ul>
 									<li>
-										<div className="cart-items-container">
-											<div className="cart-item-specs col-7">
+										<div className="cart-items-container row">
+											<div className="cart-item-specs col-12 col-md-7">
 												<div className="cart-item-img">
 													<img className="img-fluid img-thumbnail" src={image} />
 												</div>
@@ -113,7 +113,7 @@ const Cart = () => {
 													</h3>
 												</div>
 											</div>
-											<div className="cart-item-btn-container col-5">
+											<div className="cart-item-btn-container col-12 mt-2 col-md-5">
 												<button className="btn-add-cart" onClick={() => addHandle(id, price, name, image)}>
 													add <FontAwesomeIcon icon={faCartPlus} />
 												</button>
