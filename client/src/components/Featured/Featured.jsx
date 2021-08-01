@@ -5,13 +5,24 @@ import Carousel from 'react-bootstrap/Carousel';
 //react-router-dom
 import { Link } from 'react-router-dom';
 
+//fontAwsome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
+
 //redux
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { addToCart } from '../../redux/actions/cart';
 
 const Featured = () => {
 	const data = useSelector((state) => state.products);
 	const { products } = data;
 	const featured = products.filter((product) => product.onSale === true);
+
+	const dispatch = useDispatch();
+
+	const addToCartHandler = (_id, price, name, image) => {
+		dispatch(addToCart(_id, price, name, image));
+	};
 
 	if (featured !== null && featured.length > 0) {
 		return (
@@ -34,9 +45,15 @@ const Featured = () => {
 										<h2>{discount} OFF !!</h2>
 										<h4>{price}</h4>
 										<h2>${discounted_price.toFixed(2)}</h2>
-										<Link to={`/product/${_id}`} className="btn-add-cart">
-											Learn more
-										</Link>
+										<div className="featured-btn-container">
+											<Link to={`/product/${_id}`} className="btn-add-cart">
+												Learn more
+											</Link>
+											<button onClick={() => addToCartHandler(_id, price, name, image)} className="btn-add-cart">
+												{' '}
+												<FontAwesomeIcon icon={faCartPlus} />
+											</button>
+										</div>
 									</Carousel.Caption>
 								</div>
 							</Carousel.Item>
