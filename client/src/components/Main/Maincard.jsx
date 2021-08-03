@@ -10,7 +10,11 @@ import { addToCart } from '../../redux/actions/cart';
 //reac-router-dom
 import { Link } from 'react-router-dom';
 
+//component
 import Card from 'react-bootstrap/Card';
+
+//assets
+import noImage from '../../assets/no-image.png';
 
 const Maincard = () => {
 	const data = useSelector((state) => state.products);
@@ -27,9 +31,9 @@ const Maincard = () => {
 				};
 
 				return (
-					<div className="customCard">
+					<div key={_id} className="customCard">
 						<Card>
-							<Card.Img variant="top" src={image} style={{ maxHeight: '12.5rem', minHeight: '12.5rem' }} />
+							<Card.Img variant="top" src={image} style={{ maxHeight: '12.5rem', minHeight: '12.5rem' }} alt={noImage} />
 							<Card.Body>
 								<Card.Title>{name}</Card.Title>
 								<Card.Text>

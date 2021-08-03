@@ -14,6 +14,14 @@
 		.left {
 			display: flex;
 			color: $neutral-100;
+			img {
+				width: 2.57rem;
+				margin-right: .3rem;
+				margin-left: 0;
+				@include tablet {
+					width: 2rem;
+				}
+			}
 			.logo {
 				font-size: 2.5rem;
 				font-weight: 700;
@@ -49,6 +57,7 @@
 					border-radius: .15em;
 					padding: .2em .6em;
 					margin: 0 .5rem;
+
 					&:focus {
 						border: none;
 						outline: none;

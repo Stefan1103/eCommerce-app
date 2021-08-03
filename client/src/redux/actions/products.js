@@ -46,7 +46,6 @@ export const fetchProducts = () => {
 		try {
 			const results = await axios.get('/api/products');
 			const products = await results.data;
-			console.log('PRODUCTS', products);
 			dispatch(fetchProductsSuccess(products));
 		} catch (error) {
 			const errorMsg = error.msg;
@@ -61,7 +60,6 @@ export const fetchProductsSearch = (text) => {
 		try {
 			const results = await axios.get(`/api/products/s/${text}`);
 			const products = await results.data;
-			console.log('PRODUCTS // search', products);
 			dispatch(fetchProductsSuccess(products));
 		} catch (error) {
 			const errorMsg = error.msg;
@@ -75,7 +73,6 @@ export const fetchProductsCategory = (category) => {
 		try {
 			const results = await axios.get(`/api/products/${category}`);
 			const products = await results.data;
-			console.log('PRODUCTS // category', products);
 			dispatch(fetchProductsSuccess(products));
 		} catch (error) {
 			const errorMsg = error.msg;
@@ -89,7 +86,6 @@ export const fetchSelectedProduct = (id) => {
 		try {
 			const results = await axios.get(`/api/products/product/${id}`);
 			const product = await results.data;
-			console.log('PRODUCTS // id', product);
 			dispatch(fetchProductDetailsSuccess(product));
 		} catch (error) {
 			const errorMsg = error.msg;

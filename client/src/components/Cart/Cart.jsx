@@ -16,6 +16,9 @@ import { addToCart, removeFromCart, removeOneFromCart, emptyCart, setTotal } fro
 //components
 import CustomAlert from '../layout/CustomAlert';
 
+//assets
+import noImage from '../../assets/no-image.png';
+
 const Cart = () => {
 	const dispatch = useDispatch();
 	const stateCart = useSelector((state) => state.cart);
@@ -80,7 +83,7 @@ const Cart = () => {
 			<div className="wrapper-cart row">
 				<h1 className="col-12">Your Cart</h1>
 				<div className="img-container-cart col-12 col-lg-4">
-					<img className="img-fluid" src={shopingCart} />
+					<img className="img-fluid" src={shopingCart} alt={noImage} />
 				</div>
 				<div className="cart-items col-12 col-lg-8">
 					{cartItems.length <= 0 ? (
@@ -101,7 +104,7 @@ const Cart = () => {
 										<div className="cart-items-container row">
 											<div className="cart-item-specs col-12 col-md-7">
 												<div className="cart-item-img">
-													<img className="img-fluid img-thumbnail" src={image} />
+													<img className="img-fluid img-thumbnail" src={image} alt={noImage} />
 												</div>
 												<div className="cart-item-details">
 													<h3>

@@ -26,7 +26,6 @@ export const fetchCategories = () => async (dispatch) => {
 	try {
 		const response = await axios.get('/api/categories');
 		const categories = await response.data;
-		console.log('CATEGORIES', categories);
 		dispatch(fetchCategoriesSuccess(categories));
 	} catch (error) {
 		const errorMsg = error.message;

@@ -1,10 +1,13 @@
+//assets
+import logoIcon from '../../assets/f-icon.png';
+
 //react
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 //fontawsome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCloudMeatball, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 //bootstrap
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -19,13 +22,13 @@ import { Link, useHistory } from 'react-router-dom';
 const Navbar = () => {
 	const [ searchName, setSearchName ] = useState('');
 	const [ pickedCategory, setPickedCategory ] = useState('');
+	const [ dimension, setDimension ] = useState(window.innerWidth);
 
 	const dispatch = useDispatch();
 	const cat = useSelector((state) => state.categories);
 	const cart = useSelector((state) => state.cart);
 	const numberOfItemsInCart = cart.cartItems.length;
 	const categories = cat.categories;
-	console.log(categories);
 	let history = useHistory();
 
 	const submitHandler = (e) => {
@@ -45,20 +48,39 @@ const Navbar = () => {
 		history.push('/');
 	}
 
+	function resizeHandle() {
+		setDimension(window.innerWidth);
+	}
+
+	useEffect(
+		() => {
+			resizeHandle();
+
+			return () => {
+				window.removeEventListener('resize', resizeHandle);
+			};
+		},
+		[ dimension ],
+	);
+
+	window.addEventListener('resize', resizeHandle);
 	return (
 		<div className="customNavbar">
 			<div className="navWrapper">
 				<div className="left">
+					<Link to="/">
+						<img src={logoIcon} alt="F" />
+					</Link>
 					<h2 className="logo">
 						{/* onClick={() => (window.location.href = '/')} KJE RAZMISLIME DALI DA GO TURAM RELOADOT */}
-						<Link to="/">
-							<FontAwesomeIcon icon={faCloudMeatball} className="logo-i-style" /> Flea Market
-						</Link>
+						<Link to="/">Flea Market</Link>
 					</h2>
 				</div>
 				<div className="middle">
 					<Dropdown onSelect={handleDropdown}>
-						<Dropdown.Toggle id="dropdown-basic">Category</Dropdown.Toggle>
+						<Dropdown.Toggle id="dropdown-basic">
+							<span>{dimension <= 458 ? 'Cat..' : 'Category'}</span>
+						</Dropdown.Toggle>
 
 						<Dropdown.Menu>
 							{categories &&

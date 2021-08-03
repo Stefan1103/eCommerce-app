@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 
 //fontawsome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faArrowRight, faPen } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faPen } from '@fortawesome/free-solid-svg-icons';
 
 //react-router-dom
 import { Link, useHistory } from 'react-router-dom';
@@ -13,6 +13,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setTotal } from '../../redux/actions/cart';
 import React from 'react';
 
+//assets
+import noImage from '../../assets/no-image.png';
+
 const Checkout = () => {
 	let history = useHistory();
 	let radios = document.getElementsByName('shippingMethod');
@@ -20,7 +23,7 @@ const Checkout = () => {
 
 	const cart = useSelector((state) => state.cart);
 	const cartItems = cart.cartItems;
-	console.log(cartItems);
+
 	const dispatch = useDispatch();
 
 	// distinct items from cartItems
@@ -39,8 +42,6 @@ const Checkout = () => {
 	}
 
 	let total = parseFloat(cart.total.toFixed(2));
-	console.log('TOTALAKGKASEOG', total);
-	console.log('SHPPRICE', shpMethod.shpPrice);
 
 	const radioHandle = () => {
 		for (let i = 0; i < radios.length; i++) {
@@ -175,7 +176,7 @@ const Checkout = () => {
 									<React.Fragment>
 										<div className="inCart-content-items" key={id}>
 											<div className="img-container">
-												<img className="img-fluid" src={image} />
+												<img className="img-fluid" src={image} alt={noImage} />
 											</div>
 											<div className="details-container">
 												<ul>

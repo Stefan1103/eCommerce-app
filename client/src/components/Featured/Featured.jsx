@@ -13,6 +13,9 @@ import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/actions/cart';
 
+//assets
+import noImage from '../../assets/no-image.png';
+
 const Featured = () => {
 	const data = useSelector((state) => state.products);
 	const { products } = data;
@@ -37,7 +40,7 @@ const Featured = () => {
 						return (
 							<Carousel.Item key={_id}>
 								<div className="C-content">
-									<img className="d-block" src={image} alt="First slide" />
+									<img className="d-block" src={image} alt={noImage} />
 
 									<Carousel.Caption>
 										<h1>{name}</h1>
@@ -49,7 +52,10 @@ const Featured = () => {
 											<Link to={`/product/${_id}`} className="btn-add-cart">
 												Learn more
 											</Link>
-											<button onClick={() => addToCartHandler(_id, price, name, image)} className="btn-add-cart">
+											<button
+												onClick={() => addToCartHandler(_id, discounted_price.toFixed(2), name, image)}
+												className="btn-add-cart"
+											>
 												{' '}
 												<FontAwesomeIcon icon={faCartPlus} />
 											</button>

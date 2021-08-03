@@ -18,6 +18,9 @@ import { fetchSelectedProduct } from '../../redux/actions/products';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/actions/cart';
 
+//assets
+import noImage from '../../assets/no-image.png';
+
 const Productdetails = () => {
 	const { id } = useParams();
 	const dispatch = useDispatch();
@@ -25,12 +28,9 @@ const Productdetails = () => {
 		dispatch(fetchSelectedProduct(id));
 	}, []);
 	const products = useSelector((state) => state.products);
-	console.log('VODETAILS', products);
 	const { loadingDetails, error, selectedProduct } = products;
-	console.log('selected product', selectedProduct);
 	const { name, image, calories, category, desc, price, discount, onSale } = selectedProduct;
 	let discounted_price;
-	console.log('UADAFAKPRICE', price);
 
 	if (!loadingDetails) {
 		if (onSale) {
@@ -55,7 +55,7 @@ const Productdetails = () => {
 		<div className="container">
 			<div className="wrapper row">
 				<div className="img-container col-sm-4 col-xs-12">
-					<img className="img-fluid" src={image} alt="default" />
+					<img className="img-fluid" src={image} alt={noImage} />
 				</div>
 				<div className="details-container col-sm-8 col-xs-12">
 					<h2>{name}</h2>

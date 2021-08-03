@@ -16,7 +16,7 @@ import Billing from './components/Checkout/Billing/Billing';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 //react
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 //redux
 import { fetchProducts } from './redux/actions/products';
@@ -27,7 +27,6 @@ function App() {
 	const dispatch = useDispatch();
 	const products = useSelector((state) => state.products);
 	const categories = useSelector((state) => state.categories);
-	const [ refreshPage, setrefreshPage ] = useState(false);
 	useEffect(() => {
 		dispatch(fetchProducts());
 		dispatch(fetchCategories());
