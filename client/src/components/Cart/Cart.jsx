@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus, faArrowLeft, faArrowRight, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
 //react-router-dom
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 //redux
 import { useSelector, useDispatch } from 'react-redux';
@@ -26,10 +26,6 @@ const Cart = () => {
 	let filteredItems;
 	let total;
 	let history = useHistory();
-
-	const prevPathHandle = () => {
-		history.goBack();
-	};
 
 	const addHandle = (id, price, name, image) => {
 		dispatch(addToCart(id, price, name, image));
@@ -139,9 +135,9 @@ const Cart = () => {
 			<hr className="style-details-cart" />
 			<div className="wrapper-calc row">
 				<div className="calc-container col-12">
-					<button onClick={prevPathHandle} className="btn-back">
+					<Link to="/" className="btn-back">
 						<FontAwesomeIcon icon={faArrowLeft} /> Back
-					</button>
+					</Link>
 					<textbox>
 						Your total price : <span>${total.toFixed(2)}</span>
 					</textbox>
