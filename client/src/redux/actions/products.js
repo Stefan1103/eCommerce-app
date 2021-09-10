@@ -44,7 +44,7 @@ export const fetchProducts = () => {
 	return async (dispatch) => {
 		dispatch(fetchProductsRequest());
 		try {
-			const results = await axios.get('/api/products');
+			const results = await axios.get('https://e-commerce-flea-market.herokuapp.com/api/products');
 			const products = await results.data;
 			dispatch(fetchProductsSuccess(products));
 		} catch (error) {
@@ -58,7 +58,7 @@ export const fetchProductsSearch = (text) => {
 	return async (dispatch) => {
 		dispatch(fetchProductsRequest());
 		try {
-			const results = await axios.get(`/api/products/s/${text}`);
+			const results = await axios.get(`https://e-commerce-flea-market.herokuapp.com/api/products/s/${text}`);
 			const products = await results.data;
 			dispatch(fetchProductsSuccess(products));
 		} catch (error) {
@@ -71,7 +71,7 @@ export const fetchProductsCategory = (category) => {
 	return async (dispatch) => {
 		dispatch(fetchProductsRequest());
 		try {
-			const results = await axios.get(`/api/products/${category}`);
+			const results = await axios.get(`https://e-commerce-flea-market.herokuapp.com/api/products/${category}`);
 			const products = await results.data;
 			dispatch(fetchProductsSuccess(products));
 		} catch (error) {
@@ -84,7 +84,7 @@ export const fetchSelectedProduct = (id) => {
 	return async (dispatch) => {
 		dispatch(fetchProductsDetailsRequest());
 		try {
-			const results = await axios.get(`/api/products/product/${id}`);
+			const results = await axios.get(`https://e-commerce-flea-market.herokuapp.com/api/products/product/${id}`);
 			const product = await results.data;
 			dispatch(fetchProductDetailsSuccess(product));
 		} catch (error) {

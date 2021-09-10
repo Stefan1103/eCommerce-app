@@ -24,7 +24,7 @@ export const fetchCategoriesFailure = (error) => (dispatch) => {
 export const fetchCategories = () => async (dispatch) => {
 	dispatch(fetchCategoriesRequest());
 	try {
-		const response = await axios.get('/api/categories');
+		const response = await axios.get('https://e-commerce-flea-market.herokuapp.com/api/categories');
 		const categories = await response.data;
 		dispatch(fetchCategoriesSuccess(categories));
 	} catch (error) {
