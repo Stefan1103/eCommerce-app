@@ -1,0 +1,124 @@
+.container {
+	margin-bottom: 3rem;
+	.wrapper-checkout {
+		margin-top: 2rem;
+		h3 {
+			color: $neutral-900;
+			font-weight: 600;
+		}
+		.checkout-jumbotron {
+			padding-top: 1rem;
+			padding-bottom: 7rem;
+			margin-bottom: 2rem;
+			display: flex;
+			flex-direction: column;
+			.inner-wrapper-checkout {
+				margin-bottom: 1rem;
+				form {
+					margin: 1rem;
+					input {
+						width: 40%;
+					}
+					h5,
+					label {
+						.required-star {
+							color: $triadic-orange-500;
+							font-size: 1.1rem;
+						}
+					}
+				}
+			}
+			.bottom-container {
+				display: flex;
+				justify-content: space-between;
+				h6 {
+					color: gray;
+					.required-star {
+						color: $triadic-orange-500;
+						font-size: 1.2rem;
+					}
+				}
+			}
+		}
+		.checkout-jumbotron-side {
+			margin-bottom: 1rem;
+			.summary {
+				.summary-content {
+					color: $neutral-900;
+					ul {
+						::marker {
+							color: $triadic-orange-500;
+						}
+						li {
+							font-weight: 400;
+							span {
+								font-size: 1rem;
+								font-weight: 600;
+								color: $triadic-red-400;
+							}
+							#shp-method {
+								color: $triadic-orange-500;
+							}
+						}
+					}
+				}
+			}
+
+			.inCart {
+				width: 100%;
+				.inCart-title {
+					h3 {
+						color: $neutral-900;
+						font-weight: 600;
+						span {
+							color: $triadic-orange-500;
+						}
+					}
+				}
+				.inCart-content {
+					width: 100%;
+					.inCart-content-items {
+						width: 100%;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						.img-container {
+							width: 30%;
+							img {
+								width: 130px;
+								max-height: 100px;
+								object-fit: contain;
+							}
+						}
+						.details-container {
+							width: 70%;
+							ul {
+								::marker {
+									color: $triadic-orange-500;
+									content: '✓︁';
+									font-family: 'Font Awesome 6 Free';
+									font-weight: 700;
+								}
+								li {
+									padding-left: .2rem;
+									span {
+										color: $triadic-red-400;
+										font-weight: 500;
+									}
+								}
+							}
+						}
+					}
+				}
+				.edit-cart-link {
+					color: rgb(164, 164, 224);
+
+					&:hover {
+						color: rgb(126, 105, 126);
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+	}
+}

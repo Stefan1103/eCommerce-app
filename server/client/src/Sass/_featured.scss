@@ -1,0 +1,79 @@
+.customCarousel {
+	margin-top: 3rem;
+	height: 100%;
+	.carousel-control-next-icon,
+	.carousel-control-prev-icon {
+		filter: invert(1);
+		height: 3rem;
+		width: 2.5rem;
+	}
+	.carousel-item {
+		.C-content {
+			height: 100%;
+			background: linear-gradient(hsla(0, 0%, 0%, 0), hsla(0, 0%, 0%, .2) 20%, hsla(0, 0%, 0%, 1));
+			border-radius: 50%;
+			border: .5rem solid $triadic-orange-500;
+
+			.featured-btn-container {
+				button {
+					margin: .4rem;
+				}
+			}
+
+			h4 {
+				text-decoration: line-through $triadic-red-400 3px;
+				font-weight: 600;
+				font-size: 1.7rem;
+
+				@include tabletM {
+					font-size: 1.3rem;
+					font-weight: 500;
+				}
+			}
+			h2 {
+				color: $triadic-red-400;
+				font-weight: 800;
+				@include tabletM {
+					font-weight: 700;
+					font-size: 1.7rem;
+				}
+				@include mobileSM {
+					font-size: 1.3rem;
+				}
+			}
+			h1 {
+				font-weight: 800;
+				font-size: 3rem;
+				@include tabletM {
+					font-size: 2rem;
+					font-weight: 700;
+				}
+				@include mobileSM {
+					font-size: 1.5rem;
+				}
+			}
+			p {
+				font-size: 1.8rem;
+				color: $neutral-100;
+				font-weight: 500;
+				@include tabletM {
+					font-size: 1.1rem;
+				}
+				@include mobileM {
+					display: none;
+				}
+			}
+
+			> * {
+				text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+			}
+
+			img {
+				max-height: 500px;
+				width: 100%;
+				opacity: 0.9;
+				border-radius: 50%;
+			}
+		}
+	}
+}
