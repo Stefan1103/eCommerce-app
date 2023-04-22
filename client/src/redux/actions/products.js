@@ -74,7 +74,7 @@ export const fetchProductsCategory = (category) => {
     dispatch(fetchProductsRequest());
     try {
       const results = await axios.get(
-        `http://localhost:5000/api/products/${category}`,
+        `https://e-commerce-app-0li3.onrender.com/api/products${category}`,
       );
       const products = await results.data;
       dispatch(fetchProductsSuccess(products));
@@ -89,7 +89,7 @@ export const fetchSelectedProduct = (id) => {
     dispatch(fetchProductsDetailsRequest());
     try {
       const results = await axios.get(
-        `http://localhost:5000/api/products/product/${id}`,
+        `https://e-commerce-app-0li3.onrender.com/api/products${id}`,
       );
       const product = await results.data;
       dispatch(fetchProductDetailsSuccess(product));
