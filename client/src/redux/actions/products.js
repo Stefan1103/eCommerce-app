@@ -91,7 +91,7 @@ export const fetchSelectedProduct = (id) => {
     dispatch(fetchProductsDetailsRequest());
     try {
       const results = await axios.get(
-        `https://e-commerce-app-0li3.onrender.com/api/products/${id}`,
+        `https://e-commerce-app-0li3.onrender.com/api/products/product/${id}`,
       );
       const product = await results.data;
       dispatch(fetchProductDetailsSuccess(product));
