@@ -44,7 +44,9 @@ export const fetchProducts = () => {
   return async (dispatch) => {
     dispatch(fetchProductsRequest());
     try {
-      const results = await axios.get("http://localhost:5000/api/products");
+      const results = await axios.get(
+        "https://e-commerce-app-0li3.onrender.com/api/products",
+      );
       const products = await results.data;
       dispatch(fetchProductsSuccess(products));
     } catch (error) {
@@ -59,7 +61,7 @@ export const fetchProductsSearch = (text) => {
     dispatch(fetchProductsRequest());
     try {
       const results = await axios.get(
-        `http://localhost:5000/api/products/s/${text}`,
+        `https://e-commerce-app-0li3.onrender.com/api/products/s/${text}`,
       );
       const products = await results.data;
       dispatch(fetchProductsSuccess(products));
@@ -74,7 +76,7 @@ export const fetchProductsCategory = (category) => {
     dispatch(fetchProductsRequest());
     try {
       const results = await axios.get(
-        `https://e-commerce-app-0li3.onrender.com/api/products${category}`,
+        `https://e-commerce-app-0li3.onrender.com/api/products/${category}`,
       );
       const products = await results.data;
       dispatch(fetchProductsSuccess(products));
@@ -89,7 +91,7 @@ export const fetchSelectedProduct = (id) => {
     dispatch(fetchProductsDetailsRequest());
     try {
       const results = await axios.get(
-        `https://e-commerce-app-0li3.onrender.com/api/products${id}`,
+        `https://e-commerce-app-0li3.onrender.com/api/products/${id}`,
       );
       const product = await results.data;
       dispatch(fetchProductDetailsSuccess(product));
